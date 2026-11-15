@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { ArrowRight, Terminal } from 'lucide-react';
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -6,7 +7,7 @@ const Header = () => {
   const [time, setTime] = useState('');
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60);
+    const onScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener('scroll', onScroll);
 
     const tick = () => {
@@ -14,7 +15,7 @@ const Header = () => {
       setTime(now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false }));
     };
     tick();
-    const timer = setInterval(tick, 60000);
+    const timer = setInterval(tick, 30000);
 
     return () => {
       window.removeEventListener('scroll', onScroll);
@@ -27,77 +28,101 @@ const Header = () => {
     setMenuOpen(false);
   };
 
-  const navItems = ['about', 'services', 'projects', 'contact'];
+  const navItems = [
+    { label: 'About', id: 'about' },
+    { label: 'Services', id: 'services' },
+    { label: 'Projects', id: 'projects' },
+    { label: 'Contact', id: 'contact' },
+  ];
 
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 px-8 md:px-16 lg:px-24 py-5 flex items-center justify-between transition-all duration-500 ${
-          scrolled ? 'bg-black/90 backdrop-blur-sm border-b border-white/5' : 'bg-transparent'
+        className={`fixed top-0 left-0 right-0 z-50 px-6 md:px-16 lg:px-24 py-4 flex items-center justify-between transition-all duration-300 ${
+          scrolled ? 'bg-[#030712]/90 backdrop-blur-md border-b border-white/10 shadow-lg' : 'bg-transparent'
         }`}
       >
-        {/* Logo / Name */}
+        {/* Brand / Logo */}
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          className="group flex items-center gap-3"
+          className="group flex items-center gap-3 cursor-pointer text-left"
         >
-          <span
-            className="font-display text-xl tracking-[0.15em] text-white uppercase"
-          >
+          <div className="w-9 h-9 rounded-lg bg-white/5 border border-white/15 flex items-center justify-center font-display text-lg tracking-wider text-white group-hover:border-cyan-400 group-hover:text-cyan-400 transition-all">
             AM
-          </span>
-          <span className="hidden md:block w-px h-4 bg-white/20" />
-          <span className="hidden md:block font-mono text-[10px] tracking-[0.2em] text-white/30 uppercase">
-            {time} IST
-          </span>
+          </div>
+          <div className="hidden sm:block">
+            <span className="font-display text-base tracking-wider text-white block leading-none">
+              ABHISHEK MISHRA
+            </span>
+            <span className="font-mono text-[10px] tracking-wider text-white/40 block mt-0.5">
+              CLOUD &amp; DEVOPS
+            </span>
+          </div>
         </button>
 
-        {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-10">
+        {/* Desktop Nav */}
+        <nav className="hidden md:flex items-center gap-8">
           {navItems.map((item) => (
             <button
-              key={item}
-              onClick={() => scrollTo(item)}
-              className="link-underline font-mono text-xs tracking-[0.2em] text-white/50 hover:text-white transition-colors uppercase"
+              key={item.id}
+              onClick={() => scrollTo(item.id)}
+              className="font-mono text-xs tracking-wider text-white/60 hover:text-cyan-300 transition-colors uppercase cursor-pointer"
             >
-              {item}
+              {item.label}
             </button>
           ))}
         </nav>
 
-        {/* Mobile hamburger */}
+        {/* Right CTA & Clock */}
+        <div className="hidden md:flex items-center gap-5">
+          <div className="flex items-center gap-2 font-mono text-[11px] text-white/40 border-r border-white/10 pr-5">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+            <span>{time} IST</span>
+          </div>
+
+          <button
+            onClick={() => scrollTo('contact')}
+            className="px-4 py-2 bg-white/[0.06] border border-white/15 hover:border-cyan-400/50 hover:bg-white/10 text-white font-mono text-xs uppercase tracking-wider rounded-lg transition-all cursor-pointer flex items-center gap-1.5"
+          >
+            <span>Let's Talk</span>
+            <ArrowRight size={13} />
+          </button>
+        </div>
+
+        {/* Mobile Hamburger */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className="md:hidden flex flex-col gap-1.5 p-1 group"
-          aria-label="Menu"
+          className="md:hidden p-2 text-white/70 hover:text-white"
+          aria-label="Toggle menu"
         >
-          <span
-            className={`block w-6 h-px bg-white transition-all duration-300 ${menuOpen ? 'rotate-45 translate-y-1.5' : ''}`}
-          />
-          <span
-            className={`block w-6 h-px bg-white transition-all duration-300 ${menuOpen ? 'opacity-0' : ''}`}
-          />
-          <span
-            className={`block w-6 h-px bg-white transition-all duration-300 ${menuOpen ? '-rotate-45 -translate-y-1.5' : ''}`}
-          />
+          <div className="w-6 h-5 flex flex-col justify-between">
+            <span className={`h-0.5 w-full bg-white transition-all ${menuOpen ? 'rotate-45 translate-y-2' : ''}`} />
+            <span className={`h-0.5 w-full bg-white transition-all ${menuOpen ? 'opacity-0' : ''}`} />
+            <span className={`h-0.5 w-full bg-white transition-all ${menuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
+          </div>
         </button>
       </header>
 
-      {/* Full-screen mobile menu */}
+      {/* Mobile Drawer */}
       {menuOpen && (
-        <div
-          className="fixed inset-0 z-40 bg-black flex flex-col items-center justify-center gap-10"
-          style={{ animation: 'fadeIn 0.3s ease' }}
-        >
+        <div className="fixed inset-0 z-40 bg-[#030712]/95 backdrop-blur-xl flex flex-col items-center justify-center gap-8">
           {navItems.map((item) => (
             <button
-              key={item}
-              onClick={() => scrollTo(item)}
-              className="font-display text-5xl tracking-widest text-white uppercase hover:text-white/60 transition-colors"
+              key={item.id}
+              onClick={() => scrollTo(item.id)}
+              className="font-display text-4xl tracking-widest text-white uppercase hover:text-cyan-300 transition-colors"
             >
-              {item}
+              {item.label}
             </button>
           ))}
+          <div className="mt-6">
+            <button
+              onClick={() => scrollTo('contact')}
+              className="px-8 py-3.5 bg-cyan-400 text-black font-mono text-xs uppercase tracking-wider font-semibold rounded-lg"
+            >
+              Get In Touch
+            </button>
+          </div>
         </div>
       )}
     </>

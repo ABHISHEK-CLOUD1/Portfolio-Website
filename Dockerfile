@@ -12,6 +12,7 @@ RUN yarn build
 # Production Nginx Runtime
 FROM nginx:alpine
 COPY --from=build /app/build /usr/share/nginx/html
+RUN ln -s . /usr/share/nginx/html/app
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]

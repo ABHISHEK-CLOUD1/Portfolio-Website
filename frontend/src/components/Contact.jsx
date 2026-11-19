@@ -1,16 +1,23 @@
 import React, { useState } from 'react';
 import { personalInfo } from '../mock';
-import { Mail, Linkedin, Instagram, Github, ArrowUpRight, Send, CheckCircle2, AlertCircle, Loader2, Sparkles } from 'lucide-react';
+import { Mail, Phone, MapPin, Linkedin, Github, Send, CheckCircle2, AlertCircle, Loader2, Copy, Check, ArrowUpRight } from 'lucide-react';
 
 const Contact = () => {
   const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
   const [status, setStatus] = useState('idle'); // 'idle' | 'submitting' | 'success' | 'error'
   const [successNote, setSuccessNote] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const [copiedPhone, setCopiedPhone] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleCopyPhone = () => {
+    navigator.clipboard.writeText(personalInfo.phone);
+    setCopiedPhone(true);
+    setTimeout(() => setCopiedPhone(false), 2000);
   };
 
   const handleSubmit = async (e) => {
@@ -20,7 +27,7 @@ const Contact = () => {
     setSuccessNote('');
 
     try {
-      const response = await fetch('https://formsubmit.co/ajax/abhishek010601@gmail.com', {
+      const response = await fetch(`https://formsubmit.co/ajax/${personalInfo.email}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -29,7 +36,7 @@ const Contact = () => {
         body: JSON.stringify({
           name: formData.name,
           email: formData.email,
-          _subject: `New Portfolio Contact: ${formData.subject || 'Inquiry'} (from ${formData.name})`,
+          _subject: `New Portfolio Message: ${formData.subject || 'Cloud & DevOps Role'} (from ${formData.name})`,
           subject: formData.subject,
           message: formData.message,
           _template: 'table',
@@ -38,14 +45,14 @@ const Contact = () => {
       });
 
       const data = await response.json();
-      
+
       if (response.ok && (data.success === 'true' || data.success === true || response.status === 200)) {
         setStatus('success');
-        setSuccessNote("Message delivered! An instant email notification has been dispatched to abhishek010601@gmail.com.");
+        setSuccessNote(`Message delivered! An instant notification has been dispatched to ${personalInfo.email}.`);
         setFormData({ name: '', email: '', subject: '', message: '' });
       } else if (data.message && data.message.toLowerCase().includes('activation')) {
         setStatus('success');
-        setSuccessNote("Form Activation Required: FormSubmit has sent a one-time 'Activate Form' confirmation email to abhishek010601@gmail.com. Click the link in your email once, and all messages will arrive directly in your inbox!");
+        setSuccessNote(`Form Activation Notice: FormSubmit has sent a one-time activation confirmation email to ${personalInfo.email}. Once verified, all messages arrive immediately!`);
         setFormData({ name: '', email: '', subject: '', message: '' });
       } else {
         throw new Error(data.message || 'Notification service responded with an error');
@@ -54,147 +61,158 @@ const Contact = () => {
       console.error('Contact submit error:', err);
       setStatus('error');
       setErrorMessage(
-        'Could not deliver automated notification. Please send directly via email client using the link below.'
+        'Could not deliver automated notification. Please send directly via email client or phone.'
       );
     }
   };
 
   const inputClass = `
-    w-full bg-white/[0.03] border border-white/10 rounded-lg
-    px-4 py-3.5 font-mono text-sm text-white placeholder-white/30
-    focus:outline-none focus:border-cyan-400/80 focus:ring-1 focus:ring-cyan-400/50 transition-all
-    tracking-wide
+    w-full bg-[#FBF9F5] border border-[#E4E0D5] rounded-xl
+    px-4 py-3.5 font-mono text-sm text-[#121316] placeholder-[#767A85]
+    focus:outline-none focus:border-[#0052FF] focus:ring-2 focus:ring-[#0052FF]/20 transition-all
   `;
 
   const channels = [
-    { 
-      icon: <Mail size={16} />, 
-      label: 'Direct Email', 
-      value: personalInfo.email, 
-      href: `mailto:${personalInfo.email}?subject=Project%20Inquiry%20via%20Portfolio` 
+    {
+      icon: <Mail size={16} className="text-[#0052FF]" />,
+      label: 'Direct Email',
+      value: personalInfo.email,
+      href: `mailto:${personalInfo.email}?subject=Cloud%20%26%20DevOps%20Opportunity`
     },
-    { 
-      icon: <Linkedin size={16} />, 
-      label: 'LinkedIn', 
-      value: 'Connect with Abhishek', 
-      href: personalInfo.linkedin 
+    {
+      icon: <Phone size={16} className="text-[#059669]" />,
+      label: 'Direct Phone / WhatsApp',
+      value: personalInfo.phone,
+      href: `tel:${personalInfo.phone.replace(/[^0-9+]/g, '')}`,
+      canCopy: true
     },
-    { 
-      icon: <Github size={16} />, 
-      label: 'GitHub', 
-      value: 'Explore Repositories', 
-      href: personalInfo.github 
+    {
+      icon: <MapPin size={16} className="text-[#FF4D00]" />,
+      label: 'Location',
+      value: personalInfo.location,
+      href: `https://maps.google.com/?q=${encodeURIComponent(personalInfo.location)}`
     },
-    { 
-      icon: <Instagram size={16} />, 
-      label: 'Instagram', 
-      value: 'Follow Updates', 
-      href: personalInfo.instagram 
+    {
+      icon: <Linkedin size={16} className="text-[#0052FF]" />,
+      label: 'LinkedIn Profile',
+      value: 'Connect with Abhishek Mishra',
+      href: personalInfo.linkedin
     },
+    {
+      icon: <Github size={16} className="text-[#121316]" />,
+      label: 'GitHub Profile',
+      value: 'github.com/ABHISHEK-CLOUD1',
+      href: personalInfo.github
+    }
   ];
 
   return (
-    <section id="contact" className="relative py-28 px-6 md:px-16 lg:px-24 bg-[#030712] border-t border-white/10 text-white overflow-hidden">
-      {/* Subtle background glow */}
-      <div className="absolute top-1/2 right-0 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-10 w-80 h-80 bg-purple-500/5 rounded-full blur-3xl pointer-events-none" />
+    <section id="contact" className="py-24 px-6 md:px-16 lg:px-24 bg-[#FBF9F5] border-b border-[#E4E0D5]">
+      <div className="max-w-7xl mx-auto">
 
-      <div className="max-w-7xl mx-auto relative z-10">
-
-        {/* Section Header */}
-        <div className="flex items-center gap-4 mb-16">
-          <span className="font-mono text-xs tracking-[0.3em] text-cyan-400 uppercase font-semibold">04</span>
-          <div className="w-12 h-px bg-white/20" />
-          <span className="font-mono text-xs tracking-[0.3em] text-white/40 uppercase">Get In Touch</span>
+        {/* Section Index Marker */}
+        <div className="flex items-center gap-3 mb-12">
+          <span className="font-mono text-xs tracking-[0.25em] text-[#0052FF] uppercase font-bold">04 // CONTACT</span>
+          <div className="w-10 h-px bg-[#E4E0D5]" />
+          <span className="font-mono text-xs tracking-wider text-[#767A85] uppercase">Start A Conversation</span>
         </div>
 
         {/* Headline */}
         <div className="mb-16">
-          <h2 className="font-display text-[clamp(2.5rem,7vw,6rem)] leading-none tracking-tight uppercase text-white mb-2">
-            Let's Start A
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#121316]">
+            Let's Build &amp; Scale <br />
+            <span className="text-[#0052FF]">Together</span>
           </h2>
-          <h2 className="font-display text-[clamp(2.5rem,7vw,6rem)] leading-none tracking-tight uppercase text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-white/40">
-            Conversation
-          </h2>
+          <p className="text-sm md:text-base text-[#4A4D57] max-w-xl mt-3 leading-relaxed">
+            Available for Cloud &amp; DevOps Engineering roles, hybrid cloud infrastructure design, Kubernetes deployments, and enterprise operations.
+          </p>
         </div>
 
-        <div className="grid lg:grid-cols-12 gap-16">
-          {/* Left Column: Direct Channels & Information */}
-          <div className="lg:col-span-5 space-y-8">
-            <p className="text-white/60 leading-relaxed text-base">
-              Whether you need to architect scalable cloud infrastructure, automate deployment pipelines, or build modern web platforms, I'd love to hear from you.
-            </p>
-
-            <div className="space-y-3">
-              {channels.map(({ icon, label, value, href }) => (
+        <div className="grid lg:grid-cols-12 gap-12 items-start">
+          {/* Left Column: Direct Channels */}
+          <div className="lg:col-span-5 space-y-4">
+            {channels.map(({ icon, label, value, href, canCopy }) => (
+              <div
+                key={label}
+                className="p-4 rounded-xl bg-white border border-[#E4E0D5] hover:border-[#121316] transition-all flex items-center justify-between group shadow-2xs"
+              >
                 <a
-                  key={label}
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-center justify-between p-4 rounded-xl bg-white/[0.02] border border-white/5 hover:border-cyan-400/30 hover:bg-white/[0.04] transition-all duration-300"
+                  className="flex items-center gap-3.5 flex-1"
                 >
-                  <div className="flex items-center gap-4">
-                    <div className="w-10 h-10 rounded-lg bg-white/[0.05] border border-white/10 flex items-center justify-center text-cyan-400 group-hover:scale-105 group-hover:bg-cyan-400 group-hover:text-black transition-all duration-300">
-                      {icon}
-                    </div>
-                    <div>
-                      <p className="font-mono text-[10px] text-white/35 tracking-wider uppercase">{label}</p>
-                      <p className="font-sans text-sm text-white/80 group-hover:text-white font-medium transition-colors">{value}</p>
-                    </div>
+                  <div className="w-10 h-10 rounded-lg bg-[#FBF9F5] border border-[#E4E0D5] flex items-center justify-center group-hover:scale-105 transition-transform">
+                    {icon}
                   </div>
-                  <ArrowUpRight size={16} className="text-white/20 group-hover:text-cyan-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+                  <div>
+                    <p className="font-mono text-[10px] text-[#767A85] uppercase tracking-wider font-medium">{label}</p>
+                    <p className="font-sans text-sm font-semibold text-[#121316] group-hover:text-[#0052FF] transition-colors">{value}</p>
+                  </div>
                 </a>
-              ))}
-            </div>
 
-            {/* Notification Guarantee Note */}
-            <div className="p-4 rounded-xl bg-white/[0.02] border border-white/10 flex items-start gap-3">
-              <span className="relative flex h-2 w-2 mt-1.5 flex-shrink-0">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                {canCopy ? (
+                  <button
+                    onClick={handleCopyPhone}
+                    title="Copy phone number"
+                    className="p-2 text-[#767A85] hover:text-[#0052FF] transition-colors cursor-pointer"
+                  >
+                    {copiedPhone ? <Check size={16} className="text-[#059669]" /> : <Copy size={16} />}
+                  </button>
+                ) : (
+                  <a href={href} target="_blank" rel="noopener noreferrer">
+                    <ArrowUpRight size={16} className="text-[#767A85] group-hover:text-[#0052FF] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+                  </a>
+                )}
+              </div>
+            ))}
+
+            <div className="p-4 rounded-xl bg-white border border-[#E4E0D5] flex items-start gap-3 mt-6">
+              <span className="relative flex h-2 w-2 mt-1.5 shrink-0">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#059669] opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#059669]"></span>
               </span>
-              <p className="font-mono text-xs text-white/50 leading-relaxed">
-                Direct Email Dispatch: Form submissions trigger an instant email alert to <span className="text-white/80 font-medium">{personalInfo.email}</span>.
+              <p className="font-mono text-xs text-[#4A4D57] leading-relaxed">
+                Direct Notification Engine: Messages submitted through the form trigger an automated instant alert to <span className="font-semibold text-[#121316]">{personalInfo.email}</span>.
               </p>
             </div>
           </div>
 
-          {/* Right Column: Interactive Form */}
+          {/* Right Column: Contact Form */}
           <div className="lg:col-span-7">
-            <div className="bg-[#0a0f1d]/70 border border-white/10 rounded-2xl p-8 md:p-10 backdrop-blur-xl shadow-xl">
+            <div className="bg-white border-2 border-[#121316] rounded-2xl p-8 md:p-10 shadow-[6px_6px_0px_0px_#121316]">
               {status === 'success' ? (
-                <div className="py-12 text-center space-y-5 animate-in fade-in duration-500">
-                  <div className="w-16 h-16 rounded-full bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center mx-auto text-emerald-400">
-                    <CheckCircle2 size={36} />
+                <div className="py-12 text-center space-y-4">
+                  <div className="w-16 h-16 rounded-full bg-[#059669]/10 text-[#059669] border border-[#059669]/20 flex items-center justify-center mx-auto">
+                    <CheckCircle2 size={32} />
                   </div>
-                  <h3 className="font-display text-3xl uppercase tracking-wider text-white">
-                    Message Delivered!
+                  <h3 className="font-sans font-bold text-2xl text-[#121316]">
+                    Message Dispatched!
                   </h3>
-                  <p className="font-mono text-sm text-white/70 max-w-md mx-auto leading-relaxed">
-                    {successNote || `An email notification was dispatched directly to ${personalInfo.email}.`}
+                  <p className="font-mono text-xs text-[#4A4D57] max-w-md mx-auto leading-relaxed">
+                    {successNote || `Notification delivered directly to ${personalInfo.email}.`}
                   </p>
                   <div className="pt-4">
                     <button
                       onClick={() => setStatus('idle')}
-                      className="px-6 py-3 font-mono text-xs uppercase tracking-wider bg-white/10 hover:bg-white/20 text-white rounded-lg transition-colors cursor-pointer"
+                      className="px-6 py-2.5 rounded-lg font-mono text-xs uppercase tracking-wider bg-[#121316] text-white hover:bg-[#0052FF] transition-colors cursor-pointer"
                     >
                       Send Another Message
                     </button>
                   </div>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-5">
                   {status === 'error' && (
-                    <div className="p-4 rounded-lg bg-red-500/10 border border-red-500/30 flex items-center gap-3 text-red-300 text-xs font-mono">
-                      <AlertCircle size={16} className="flex-shrink-0" />
+                    <div className="p-3.5 rounded-lg bg-red-50 border border-red-200 text-red-700 text-xs font-mono flex items-center gap-2">
+                      <AlertCircle size={15} className="shrink-0" />
                       <span>{errorMessage}</span>
                     </div>
                   )}
 
-                  <div className="grid md:grid-cols-2 gap-6">
+                  <div className="grid md:grid-cols-2 gap-5">
                     <div>
-                      <label className="font-mono text-xs text-white/50 tracking-wider uppercase block mb-2">
+                      <label className="font-mono text-xs uppercase text-[#121316] font-bold block mb-1.5">
                         Your Name *
                       </label>
                       <input
@@ -208,13 +226,13 @@ const Contact = () => {
                       />
                     </div>
                     <div>
-                      <label className="font-mono text-xs text-white/50 tracking-wider uppercase block mb-2">
+                      <label className="font-mono text-xs uppercase text-[#121316] font-bold block mb-1.5">
                         Your Email *
                       </label>
                       <input
                         name="email"
                         type="email"
-                        placeholder="alex@example.com"
+                        placeholder="alex@enterprise.com"
                         value={formData.email}
                         onChange={handleChange}
                         required
@@ -224,13 +242,13 @@ const Contact = () => {
                   </div>
 
                   <div>
-                    <label className="font-mono text-xs text-white/50 tracking-wider uppercase block mb-2">
+                    <label className="font-mono text-xs uppercase text-[#121316] font-bold block mb-1.5">
                       Subject *
                     </label>
                     <input
                       name="subject"
                       type="text"
-                      placeholder="Cloud Architecture / Project Collaboration"
+                      placeholder="Cloud & DevOps Engineering Opportunity"
                       value={formData.subject}
                       onChange={handleChange}
                       required
@@ -239,13 +257,13 @@ const Contact = () => {
                   </div>
 
                   <div>
-                    <label className="font-mono text-xs text-white/50 tracking-wider uppercase block mb-2">
+                    <label className="font-mono text-xs uppercase text-[#121316] font-bold block mb-1.5">
                       Message *
                     </label>
                     <textarea
                       name="message"
                       rows={5}
-                      placeholder="Share details about your requirements, project timeline, or goals..."
+                      placeholder="Share details regarding your team, infrastructure requirements, or scheduled interviews..."
                       value={formData.message}
                       onChange={handleChange}
                       required
@@ -257,24 +275,24 @@ const Contact = () => {
                     <button
                       type="submit"
                       disabled={status === 'submitting'}
-                      className="w-full sm:w-auto px-8 py-4 bg-white text-black font-mono text-xs tracking-wider uppercase font-semibold rounded-lg hover:bg-cyan-300 transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-white/10 hover:shadow-cyan-400/25 disabled:opacity-50 cursor-pointer"
+                      className="w-full sm:w-auto px-8 py-3.5 bg-[#0052FF] hover:bg-[#0043D6] text-white font-mono text-xs tracking-wider uppercase font-semibold rounded-xl transition-all flex items-center justify-center gap-2 cursor-pointer shadow-sm disabled:opacity-50"
                     >
                       {status === 'submitting' ? (
                         <>
                           <Loader2 size={15} className="animate-spin" />
-                          <span>Delivering Notification...</span>
+                          <span>Dispatching Notification...</span>
                         </>
                       ) : (
                         <>
                           <span>Send Message</span>
-                          <Send size={14} />
+                          <Send size={13} />
                         </>
                       )}
                     </button>
 
                     <a
-                      href={`mailto:${personalInfo.email}?subject=Direct%20Inquiry&body=Hi%20Abhishek,%0A%0A`}
-                      className="w-full sm:w-auto px-6 py-4 font-mono text-xs tracking-wider uppercase text-white/40 hover:text-white text-center transition-colors"
+                      href={`mailto:${personalInfo.email}?subject=Direct%20Inquiry%20via%20Portfolio`}
+                      className="font-mono text-xs text-[#767A85] hover:text-[#121316] uppercase tracking-wider transition-colors"
                     >
                       Or open email client directly
                     </a>
@@ -284,6 +302,7 @@ const Contact = () => {
             </div>
           </div>
         </div>
+
       </div>
     </section>
   );

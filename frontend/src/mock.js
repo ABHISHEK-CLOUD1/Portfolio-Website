@@ -1,69 +1,101 @@
-// Profile data for Abhishek Mishra's Portfolio
+// Profile data for Abhishek Mishra | Cloud & DevOps Engineer
 
 export const personalInfo = {
   name: "Abhishek Mishra",
   firstName: "Abhishek",
   lastName: "Mishra",
-  title: "Cloud & DevOps Engineer | Full-Stack Developer",
-  tagline: "Engineering resilient hybrid cloud infrastructure, GitOps automation & modern digital experiences",
-  email: "abhishek010601@gmail.com",
-  instagram: "https://www.instagram.com/abhishek_x64.exe?igsh=azMwbmJ1Y2J5end2&utm_source=qr",
+  title: "Cloud & DevOps Engineer",
+  badge: "Cloud & DevOps Engineer • Enterprise Systems Specialist",
+  tagline: "Engineering resilient hybrid cloud infrastructure, declarative GitOps automation, and high-availability enterprise environments.",
+  email: "Abhishekmishra0203426@gmail.com",
+  phone: "+91-7880371643",
+  location: "Kanpur, U.P., India",
+  status: "Available for Cloud & DevOps Roles",
   linkedin: "https://www.linkedin.com/in/abhishek-mishra-a749b3220?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
   github: "https://github.com/ABHISHEK-CLOUD1",
-  location: "India • Available Worldwide",
-  status: "Available for Projects & Opportunities",
-  about: "I am a Cloud & DevOps Engineer and Full-Stack Developer specializing in building resilient, fault-tolerant infrastructure and high-performance digital platforms. My expertise spans automated Infrastructure as Code (Terraform, Ansible), container orchestration (Kubernetes K3s, Docker), and declarative GitOps pipelines (Argo CD, Jenkins), combined with clean, modern web engineering in React, TypeScript, Python, and Node.js."
+  about: "Cloud & DevOps Engineer with 4+ years of battle-tested enterprise infrastructure experience across 400+ physical and virtual servers. I specialize in bridging high-availability virtualization, automated Infrastructure as Code (Terraform, Ansible), container orchestration (Kubernetes K3s, Docker), and declarative GitOps pipelines (Argo CD, Jenkins) with enterprise-grade 99.9% uptime SLA resilience. Currently pursuing M.Tech in Computer Science at BITS Pilani."
 };
 
-export const techStack = [
-  { name: "Kubernetes (K3s)", category: "Cloud & DevOps" },
-  { name: "Docker", category: "Cloud & DevOps" },
-  { name: "Argo CD", category: "GitOps" },
-  { name: "Jenkins CI/CD", category: "Automation" },
-  { name: "Terraform", category: "IaC" },
-  { name: "Ansible", category: "IaC" },
-  { name: "Proxmox VE", category: "Virtualization" },
-  { name: "Oracle Cloud (OCI)", category: "Cloud" },
-  { name: "Prometheus", category: "Observability" },
-  { name: "Grafana", category: "Observability" },
-  { name: "React", category: "Frontend" },
-  { name: "TypeScript", category: "Frontend" },
-  { name: "Tailwind CSS", category: "Frontend" },
-  { name: "Python / FastAPI", category: "Backend" },
-  { name: "Node.js", category: "Backend" },
-  { name: "Nginx", category: "Networking" }
+export const stats = [
+  { label: "Enterprise Servers Managed", value: "400+" },
+  { label: "Production SLA Uptime", value: "99.9%" },
+  { label: "Patch Compliance Rate", value: "95%+" },
+  { label: "Hybrid Cluster Nodes", value: "10+" }
+];
+
+export const skillCategories = [
+  {
+    category: "Cloud & DevOps",
+    skills: ["Kubernetes (K3s)", "Docker", "Terraform", "Ansible", "Argo CD", "Jenkins CI/CD", "Oracle Cloud (OCI)", "Proxmox VE"]
+  },
+  {
+    category: "Virtualization & Systems",
+    skills: ["VMware vSphere 6.x/7.x", "ESXi", "vCenter", "vMotion", "HA / DRS", "Windows Server (2012–2022)", "Server Core"]
+  },
+  {
+    category: "Identity & Governance",
+    skills: ["Active Directory (AD DS)", "Group Policy (GPO)", "DNS & DHCP", "OU Hierarchy", "AD Replication", "Domain Trusts", "RBAC"]
+  },
+  {
+    category: "Endpoint & Compliance",
+    skills: ["SCCM / ConfigMgr", "Software Deployment", "WSUS Patch Rings", "Compliance Baselines", "Asset Inventory"]
+  },
+  {
+    category: "Observability & SRE",
+    skills: ["Prometheus", "Grafana", "Event Viewer", "Performance Monitor", "Log Analytics", "SolarWinds", "Splunk"]
+  },
+  {
+    category: "Scripting & Automation",
+    skills: ["PowerShell Automation", "Bash Scripting", "AD Queries", "Inventory Reporting", "Scheduled Runbooks"]
+  },
+  {
+    category: "ITIL & Operations",
+    skills: ["Incident Management (L2)", "Change Management", "Problem Management", "ServiceNow", "Symphony Summit"]
+  }
 ];
 
 export const services = [
   {
     id: 1,
-    title: "Cloud & Infrastructure as Code",
-    description: "Designing and deploying production-ready hybrid cloud clusters with Proxmox, OCI, and Terraform, ensuring reproducibility, automated provisioning, and high availability.",
-    icon: "Cloud"
+    title: "Hybrid Cloud & Infrastructure as Code",
+    description: "Designing reproducible, fault-tolerant infrastructure connecting on-premise Proxmox VE hypervisors with public Oracle Cloud Infrastructure (OCI) using Terraform and Ansible.",
+    icon: "Cloud",
+    tag: "IaC & Multi-Cloud"
   },
   {
     id: 2,
-    title: "Kubernetes & GitOps Automation",
-    description: "Orchestrating containerized workloads with K3s and implementing true GitOps with Argo CD App-of-Apps, declarative state management, and self-healing rollouts.",
-    icon: "Cpu"
+    title: "Kubernetes Orchestration & GitOps",
+    description: "Orchestrating containerized workloads with K3s and implementing true GitOps with Argo CD App-of-Apps, declarative desired-state synchronization, and self-healing rollouts.",
+    icon: "Cpu",
+    tag: "GitOps Continuous Delivery"
   },
   {
     id: 3,
-    title: "Continuous Integration & Delivery",
-    description: "Building automated end-to-end CI/CD pipelines with Jenkins and Docker for fast, reliable testing, automated builds, and zero-downtime deployment.",
-    icon: "GitBranch"
+    title: "Continuous Integration & Delivery (CI/CD)",
+    description: "Architecting automated Jenkins pipelines with multi-stage Docker builds, automated image distribution, code validation, and zero-downtime deployment workflows.",
+    icon: "GitBranch",
+    tag: "Automated Pipelines"
   },
   {
     id: 4,
-    title: "Full-Stack Web Development",
-    description: "Creating responsive, aesthetic, and lightning-fast web applications using React, modern JavaScript/TypeScript, and scalable backend APIs.",
-    icon: "Layout"
+    title: "Enterprise Wintel & VMware Virtualization",
+    description: "Administering 400+ physical and virtual Windows Servers (2012–2022) with VMware vSphere 7.x, performing non-disruptive vMotion, capacity rightsizing, and HA/DRS fault-tolerance.",
+    icon: "Server",
+    tag: "400+ Server Estates"
   },
   {
     id: 5,
-    title: "Observability & SRE Telemetry",
-    description: "Architecting full-stack monitoring meshes with Prometheus metrics collection, Grafana visualization dashboards, and proactive system health alerts.",
-    icon: "Activity"
+    title: "Active Directory Governance & Security",
+    description: "Enterprise AD DS management: user/group lifecycle, OU hierarchies, GPO hardening, replication topologies, and proven leadership cleansing 500+ stale accounts and redundant policies.",
+    icon: "Shield",
+    tag: "Enterprise Identity"
+  },
+  {
+    id: 6,
+    title: "SCCM / ConfigMgr & Patch Compliance",
+    description: "Building deployment packages, boundary groups, and automated maintenance rings—driving organization-wide patch compliance from ~70% to 95%+ with audit-ready dashboards.",
+    icon: "Activity",
+    tag: "95%+ Compliance"
   }
 ];
 
@@ -71,44 +103,178 @@ export const projects = [
   {
     id: 1,
     title: "Enterprise Hybrid Cloud & GitOps Mesh",
-    description: "10-node hybrid cloud topology connecting on-premise Proxmox VE hypervisors with Oracle Cloud Infrastructure. Managed declaratively using K3s, Argo CD App-of-Apps, and automated Jenkins CI/CD.",
+    subtitle: "Flagship DevOps Lab Architecture",
+    description: "A production-grade 10-node hybrid cloud topology connecting on-premise Proxmox VE hypervisors with Oracle Cloud Infrastructure (OCI). Declaratively managed with K3s Kubernetes, Argo CD App-of-Apps GitOps, Jenkins automated pipelines, and Prometheus observability.",
     category: "Cloud & DevOps",
-    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=600&fit=crop",
-    technologies: ["Kubernetes", "Argo CD", "Terraform", "Ansible", "OCI", "Proxmox", "Prometheus"],
+    badge: "Flagship Project",
+    isFlagship: true,
+    highlights: [
+      "10-node hybrid cluster bridging Proxmox CTs & OCI cloud compute",
+      "Argo CD App-of-Apps declarative synchronization engine",
+      "Automated Jenkins CI/CD pipeline building & deploying services",
+      "Full Prometheus TSDB & Grafana telemetry scraping 11 endpoints"
+    ],
+    technologies: ["Kubernetes (K3s)", "Argo CD", "Terraform", "Ansible", "Oracle Cloud (OCI)", "Proxmox VE", "Jenkins", "Prometheus"],
     github: "https://github.com/ABHISHEK-CLOUD1/Devops-lab"
   },
   {
     id: 2,
     title: "Automated Multi-Stage CI/CD Engine",
-    description: "Production Jenkins automation engine executing Terraform infrastructure validation, multi-stage Docker builds, image distribution, and zero-downtime service synchronization.",
+    subtitle: "Production Jenkins Pipeline Engine",
+    description: "Production Jenkins automation engine executing Terraform infrastructure validation, multi-stage Docker builds, container image verification, and zero-downtime service deployment.",
     category: "CI/CD & Automation",
-    image: "https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?w=800&h=600&fit=crop",
-    technologies: ["Jenkins", "Docker", "Ansible", "Bash", "Linux"],
+    badge: "Automation",
+    isFlagship: false,
+    highlights: [
+      "Automated pipeline triggers on Git webhook events",
+      "Multi-stage Docker builds minimizing production image footprint",
+      "Automated health checks and rollback on deployment failure"
+    ],
+    technologies: ["Jenkins", "Docker", "Ansible", "Bash", "Linux", "Git"],
     github: "https://github.com/ABHISHEK-CLOUD1/Devops-lab"
   },
   {
     id: 3,
-    title: "Modern Developer Portfolio & Web Platform",
-    description: "Production React single-page application with automated FormSubmit notification engine, Cloudflare zero-trust edge delivery, and Dockerized multi-stage container build.",
-    category: "Full Stack & Web",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
-    technologies: ["React", "Tailwind CSS", "Docker", "Cloudflare", "Nginx"],
-    github: "https://github.com/ABHISHEK-CLOUD1/app"
+    title: "Enterprise 400+ Server Wintel & Virtualization Estate",
+    subtitle: "Mission-Critical US & UK Workload Management",
+    description: "4-year administration of 400+ physical and virtual enterprise Windows Server environments (2012–2022) hosted on VMware vSphere 6.x/7.x. Maintained 99.9% uptime SLA through proactive capacity rightsizing, vMotion, and structured L2 incident response.",
+    category: "Enterprise Infrastructure",
+    badge: "Enterprise Core",
+    isFlagship: false,
+    highlights: [
+      "Administered 400+ Windows Servers with 99.9% uptime availability",
+      "Executed live vMotion migrations with zero application disruption",
+      "Mitigated snapshot sprawl and optimized datastore capacity headroom"
+    ],
+    technologies: ["VMware vSphere", "ESXi / vCenter", "Windows Server", "PowerShell", "vMotion", "HA/DRS"]
   },
   {
     id: 4,
-    title: "Hybrid Observability & Telemetry Mesh",
-    description: "Centralized Prometheus TSDB scraping 11 hybrid targets across local hypervisors and public cloud VMs with real-time Grafana dashboards.",
+    title: "Automated SCCM Patch Compliance & Baseline Modernization",
+    subtitle: "Enterprise Patch Management System",
+    description: "Architected software deployment packages, compliance baselines, and boundary groups in Microsoft Endpoint Configuration Manager (SCCM), elevating enterprise patch compliance from ~70% to 95%+ across distributed branch sites.",
+    category: "Endpoint & Compliance",
+    badge: "95%+ Compliance",
+    isFlagship: false,
+    highlights: [
+      "Elevated organization patch compliance from ~70% to 95%+",
+      "Established automated phased maintenance rings (Pilot -> Prod)",
+      "Created executive audit-ready compliance dashboards & reports"
+    ],
+    technologies: ["SCCM / ConfigMgr", "WSUS", "Group Policy (GPO)", "PowerShell", "Reporting"]
+  },
+  {
+    id: 5,
+    title: "Hybrid Observability & SRE Telemetry Mesh",
+    subtitle: "Real-time Metrics & Alerting",
+    description: "Centralized Prometheus TSDB scraping 11 hybrid targets across local hypervisors and public cloud VMs with real-time Grafana operational dashboards and incident alerting.",
     category: "SRE & Monitoring",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop",
-    technologies: ["Prometheus", "Grafana", "cAdvisor", "Node Exporter"],
+    badge: "Observability",
+    isFlagship: false,
+    highlights: [
+      "11 targets scraped across hybrid cloud environments",
+      "Real-time Grafana dashboards for node, container, and cluster metrics",
+      "Proactive threshold alerts preventing resource starvation"
+    ],
+    technologies: ["Prometheus", "Grafana", "Node Exporter", "cAdvisor", "Alertmanager"],
     github: "https://github.com/ABHISHEK-CLOUD1/Devops-lab"
+  },
+  {
+    id: 6,
+    title: "Modern Developer Portfolio & Web Platform",
+    subtitle: "Production React 19 Single Page App",
+    description: "High-performance React application engineered with Tailwind CSS, FormSubmit AJAX notification engine, multi-stage Docker containerization, and deployed on global edge CDN.",
+    category: "Web & Platform",
+    badge: "Web Platform",
+    isFlagship: false,
+    highlights: [
+      "Clean cream/ink architectural design with interactive consoles",
+      "Automated FormSubmit email notification dispatch",
+      "Multi-stage Dockerized build with Nginx SPA routing"
+    ],
+    technologies: ["React 19", "Tailwind CSS", "Docker", "Nginx", "GitHub Pages"],
+    github: "https://github.com/ABHISHEK-CLOUD1/app"
   }
 ];
 
-export const stats = [
-  { label: "Hybrid Nodes Managed", value: "10+" },
-  { label: "GitOps Automated", value: "100%" },
-  { label: "Completed Projects", value: "25+" },
-  { label: "Uptime Reliability", value: "99.9%" }
+export const experience = [
+  {
+    role: "Wintel & VMware Administrator – Level 2",
+    company: "Enterprise IT Infrastructure (US & UK Workloads)",
+    period: "4 Years Experience",
+    summary: "Led L2 operations across 400+ physical and virtual enterprise Windows Server and VMware environments, maintaining 99.9% uptime SLA, elevating patch compliance to 95%+, and driving PowerShell automation.",
+    points: [
+      "Administered 400+ physical and virtual Windows Servers (2012–2022), maintaining 99.9% uptime SLA.",
+      "Managed VMware vSphere clusters (ESXi, vCenter, vMotion, HA/DRS), optimizing VM resources and eliminating snapshot sprawl.",
+      "Designed and enforced GPO security baselines; spearheaded AD cleanup removing 500+ stale accounts and redundant policies.",
+      "Streamlined SCCM/ConfigMgr workflows, boundary groups, and maintenance rings, elevating patch compliance from ~70% to 95%+.",
+      "Served as primary L2 escalation point; authored standardized runbooks and SOPs that significantly reduced incident MTTR."
+    ]
+  }
+];
+
+export const education = [
+  {
+    degree: "M.Tech – Computer Science",
+    institution: "Birla Institute of Technology and Science (BITS), Pilani",
+    period: "In Progress (Completes in 2027)",
+    highlight: "Specializing in advanced distributed computing, cloud architecture, and systems engineering."
+  },
+  {
+    degree: "B.C.A – Bachelor of Computer Applications",
+    institution: "Dr. Virendra Swarup Institute of Computer Studies, Kanpur",
+    period: "2019 – 2022",
+    highlight: "Core computer science, operating systems, networking, database management, and programming."
+  }
+];
+
+export const certifications = [
+  {
+    name: "Microsoft AZ-900: Azure Fundamentals",
+    issuer: "Microsoft",
+    category: "Cloud",
+    type: "Official Certification"
+  },
+  {
+    name: "AWS Certified Cloud Practitioner",
+    issuer: "Amazon Web Services (AWS)",
+    category: "Cloud",
+    type: "Official Certification"
+  },
+  {
+    name: "AWS Architecting on AWS",
+    issuer: "Trainocate Group",
+    category: "Architecture",
+    type: "Professional Credential"
+  },
+  {
+    name: "AWS Digital Badge: Agentic AI Essentials",
+    issuer: "AWS",
+    category: "AI & Cloud",
+    type: "Digital Badge"
+  },
+  {
+    name: "AWS Digital Badge: Generative AI Essentials",
+    issuer: "AWS",
+    category: "AI & Cloud",
+    type: "Digital Badge"
+  },
+  {
+    name: "AWS Cloud Quest: Cloud Practitioner",
+    issuer: "AWS",
+    category: "Hands-on",
+    type: "Digital Badge"
+  },
+  {
+    name: "Microsoft Digital Badges: Cloud & AI",
+    issuer: "Microsoft",
+    category: "Cloud & AI",
+    type: "Digital Badge"
+  },
+  {
+    name: "Google Digital Badges: Cloud & AI",
+    issuer: "Google",
+    category: "Cloud & AI",
+    type: "Digital Badge"
+  }
 ];

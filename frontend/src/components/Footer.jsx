@@ -1,6 +1,6 @@
 import React from 'react';
 import { personalInfo } from '../mock';
-import { Linkedin, Instagram, Github, Mail, ArrowUp } from 'lucide-react';
+import { Linkedin, Github, Mail, Phone, ArrowUp } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -10,31 +10,32 @@ const Footer = () => {
   const navLinks = [
     { label: 'About', id: 'about' },
     { label: 'Services', id: 'services' },
-    { label: 'Projects', id: 'projects' },
+    { label: 'DevOps Lab', id: 'projects' },
+    { label: 'Certifications', id: 'certifications' },
     { label: 'Contact', id: 'contact' },
   ];
 
   const socials = [
     { href: personalInfo.github, icon: <Github size={15} />, label: 'GitHub' },
     { href: personalInfo.linkedin, icon: <Linkedin size={15} />, label: 'LinkedIn' },
-    { href: personalInfo.instagram, icon: <Instagram size={15} />, label: 'Instagram' },
     { href: `mailto:${personalInfo.email}`, icon: <Mail size={15} />, label: 'Email' },
+    { href: `tel:${personalInfo.phone.replace(/[^0-9+]/g, '')}`, icon: <Phone size={15} />, label: 'Phone' },
   ];
 
   return (
-    <footer className="relative bg-[#02050e] border-t border-white/10 px-6 md:px-16 lg:px-24 py-12 text-white">
+    <footer className="bg-white border-t border-[#E4E0D5] px-6 md:px-16 lg:px-24 py-12 text-[#121316]">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
         {/* Brand */}
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center font-display text-base text-white">
+          <div className="w-8 h-8 rounded-lg bg-[#121316] text-white flex items-center justify-center font-display text-base">
             AM
           </div>
           <div>
-            <span className="font-display text-base tracking-wider text-white block">
+            <span className="font-sans font-bold text-sm tracking-tight text-[#121316] block">
               {personalInfo.name}
             </span>
-            <span className="font-mono text-[10px] tracking-wider text-white/40 block">
-              Cloud, DevOps &amp; Full-Stack Engineering
+            <span className="font-mono text-[10px] tracking-wider text-[#0052FF] font-semibold block uppercase">
+              {personalInfo.title}
             </span>
           </div>
         </div>
@@ -45,7 +46,7 @@ const Footer = () => {
             <button
               key={item.id}
               onClick={() => scrollTo(item.id)}
-              className="font-mono text-xs tracking-wider text-white/40 hover:text-cyan-300 transition-colors uppercase cursor-pointer"
+              className="font-mono text-xs tracking-wider text-[#767A85] hover:text-[#0052FF] transition-colors uppercase font-medium cursor-pointer"
             >
               {item.label}
             </button>
@@ -62,7 +63,7 @@ const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={label}
-                className="w-8 h-8 rounded-lg bg-white/[0.03] border border-white/10 flex items-center justify-center text-white/40 hover:text-white hover:border-white/30 transition-colors"
+                className="w-8 h-8 rounded-lg bg-[#FBF9F5] border border-[#E4E0D5] flex items-center justify-center text-[#4A4D57] hover:text-[#121316] hover:border-[#121316] transition-colors"
               >
                 {icon}
               </a>
@@ -71,7 +72,7 @@ const Footer = () => {
 
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="w-8 h-8 rounded-lg bg-white/[0.05] border border-white/10 flex items-center justify-center text-white/60 hover:text-cyan-400 hover:border-cyan-400/50 transition-colors cursor-pointer"
+            className="w-8 h-8 rounded-lg bg-[#FBF9F5] border border-[#E4E0D5] flex items-center justify-center text-[#767A85] hover:text-[#0052FF] hover:border-[#0052FF] transition-colors cursor-pointer"
             aria-label="Back to top"
           >
             <ArrowUp size={14} />
@@ -79,13 +80,13 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Bottom Copyright */}
-      <div className="max-w-7xl mx-auto mt-8 pt-6 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-3">
-        <p className="font-mono text-[11px] text-white/30 tracking-wider">
-          &copy; {currentYear} {personalInfo.name}. All rights reserved.
+      {/* Bottom Copyright & Contacts */}
+      <div className="max-w-7xl mx-auto mt-8 pt-6 border-t border-[#E4E0D5] flex flex-col sm:flex-row items-center justify-between gap-3 text-[#767A85] font-mono text-xs">
+        <p>
+          &copy; {currentYear} {personalInfo.name} • {personalInfo.location}
         </p>
-        <p className="font-mono text-[11px] text-white/30 tracking-wider">
-          Direct Inquiries: <a href={`mailto:${personalInfo.email}`} className="text-white/60 hover:text-cyan-400 transition-colors">{personalInfo.email}</a>
+        <p>
+          Direct: <a href={`mailto:${personalInfo.email}`} className="text-[#121316] hover:text-[#0052FF] transition-colors font-medium">{personalInfo.email}</a> • <a href={`tel:${personalInfo.phone.replace(/[^0-9+]/g, '')}`} className="text-[#121316] hover:text-[#0052FF] transition-colors font-medium">{personalInfo.phone}</a>
         </p>
       </div>
     </footer>

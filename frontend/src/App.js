@@ -11,16 +11,16 @@ import { Toaster } from './components/ui/toaster';
 
 function App() {
   return (
-    <div className="App bg-[#030712] min-h-screen text-white relative selection:bg-cyan-500 selection:text-black">
+    <div className="App bg-[#FBF9F5] text-[#121316] min-h-screen relative selection:bg-[#0052FF] selection:text-white font-sans">
       {/* Subtle architectural vertical lines */}
       <div className="fixed inset-0 pointer-events-none z-0">
-        <div className="max-w-7xl mx-auto h-full grid grid-cols-4 md:grid-cols-6 opacity-[0.03]">
-          <div className="border-r border-white" />
-          <div className="border-r border-white" />
-          <div className="border-r border-white" />
-          <div className="border-r border-white hidden md:block" />
-          <div className="border-r border-white hidden md:block" />
-          <div className="border-r border-white" />
+        <div className="max-w-7xl mx-auto h-full grid grid-cols-4 md:grid-cols-6 opacity-[0.035]">
+          <div className="border-r border-[#121316]" />
+          <div className="border-r border-[#121316]" />
+          <div className="border-r border-[#121316]" />
+          <div className="border-r border-[#121316] hidden md:block" />
+          <div className="border-r border-[#121316] hidden md:block" />
+          <div className="border-r border-[#121316]" />
         </div>
       </div>
 

@@ -15,15 +15,15 @@ body {
     font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background: #030712;
-    color: #fff;
+    background-color: #FBF9F5;
+    color: #121316;
     overflow-x: hidden;
 }
 
 /* ── Typography ── */
 .font-display {
     font-family: 'Bebas Neue', sans-serif;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.04em;
 }
 
 .font-mono {
@@ -33,69 +33,60 @@ body {
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Space Grotesk', sans-serif;
     letter-spacing: -0.02em;
+    color: #121316;
 }
 
 /* ── Design Tokens ── */
 @layer base {
     :root {
-        --background: 222 47% 4%;
-        --foreground: 0 0% 100%;
-        --card: 222 47% 6%;
-        --card-foreground: 0 0% 98%;
-        --popover: 222 47% 6%;
-        --popover-foreground: 0 0% 98%;
-        --primary: 188 95% 43%;
-        --primary-foreground: 0 0% 0%;
-        --secondary: 222 30% 12%;
-        --secondary-foreground: 0 0% 90%;
-        --muted: 222 30% 15%;
-        --muted-foreground: 0 0% 60%;
-        --accent: 188 95% 43%;
+        --background: 40 33% 97%;
+        --foreground: 220 10% 8%;
+        --card: 0 0% 100%;
+        --card-foreground: 220 10% 8%;
+        --popover: 0 0% 100%;
+        --popover-foreground: 220 10% 8%;
+        --primary: 221 100% 50%;
+        --primary-foreground: 0 0% 100%;
+        --secondary: 40 20% 93%;
+        --secondary-foreground: 220 10% 15%;
+        --muted: 40 15% 91%;
+        --muted-foreground: 220 8% 46%;
+        --accent: 18 100% 50%;
         --accent-foreground: 0 0% 100%;
         --destructive: 0 84% 60%;
         --destructive-foreground: 0 0% 98%;
-        --border: 222 25% 15%;
-        --input: 222 30% 12%;
-        --ring: 188 95% 43%;
-        --radius: 8px;
+        --border: 40 18% 87%;
+        --input: 40 18% 87%;
+        --ring: 221 100% 50%;
+        --radius: 12px;
     }
 }
 
-@layer base {
-    * { @apply border-border; }
-    body { @apply bg-background text-foreground; }
+/* ── Selection ── */
+::selection {
+    background: #0052FF;
+    color: #ffffff;
 }
-
-/* ── Animations ── */
-@keyframes fadeUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to   { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to   { opacity: 1; }
-}
-
-.animate-fade-up { animation: fadeUp 0.8s cubic-bezier(0.16,1,0.3,1) forwards; }
-.animate-fade-in { animation: fadeIn 0.6s ease forwards; }
 
 /* ── Scrollbar ── */
-::-webkit-scrollbar { width: 5px; }
-::-webkit-scrollbar-track { background: #030712; }
-::-webkit-scrollbar-thumb { background: rgba(56, 189, 248, 0.3); border-radius: 4px; }
-::-webkit-scrollbar-thumb:hover { background: rgba(56, 189, 248, 0.6); }
-
-/* ── Selection ── */
-::selection { background: #38bdf8; color: #000; }
-
-/* ── Glow & Gradients ── */
-.glow-cyan {
-    box-shadow: 0 0 30px rgba(6, 182, 212, 0.25);
+::-webkit-scrollbar {
+    width: 6px;
+}
+::-webkit-scrollbar-track {
+    background: #FBF9F5;
+}
+::-webkit-scrollbar-thumb {
+    background: #D5CFBE;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #0052FF;
 }
 
-.text-gradient {
-    background: linear-gradient(135deg, #ffffff 0%, rgba(255, 255, 255, 0.7) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+/* ── Subtle Architectural Grid Pattern ── */
+.bg-cream-grid {
+    background-image: 
+        linear-gradient(to right, rgba(18, 19, 22, 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(18, 19, 22, 0.04) 1px, transparent 1px);
+    background-size: 32px 32px;
 }

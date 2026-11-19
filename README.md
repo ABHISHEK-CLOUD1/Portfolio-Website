@@ -1,160 +1,65 @@
-# Abhishek Mishra — Cloud, DevOps & Full-Stack Developer Platform
+# Abhishek Mishra — Cloud & DevOps Engineer | Enterprise Systems Architect
 
 [![Production Status](https://img.shields.io/badge/Status-Operational%20%2F%20Live-brightgreen)](https://abhishek-cloud1.github.io/app/)
 [![GitHub Pages](https://img.shields.io/badge/Deployed%20To-GitHub%20Pages-blue?logo=github)](https://abhishek-cloud1.github.io/app/)
-[![Docker Host](https://img.shields.io/badge/Docker%20Node-CT108%20Proxmox-E57000?logo=docker)](http://192.168.155.139:8080/)
-[![GitOps Engine](https://img.shields.io/badge/GitOps-Argo%20CD%20v3.6.1-EF7B4D?logo=argo)](https://192.168.155.142:30443)
-[![CI/CD Pipeline](https://img.shields.io/badge/CI%2FCD-Jenkins%20Automated-D24939?logo=jenkins)](http://10.10.10.102:8080/)
-[![Frontend](https://img.shields.io/badge/Frontend-React%2019%20%2B%20Tailwind%203.4-61DAFB?logo=react)](https://react.dev)
+[![Frontend](https://img.shields.io/badge/Frontend-React%2019%20%2B%20Tailwind%203.4-0052FF?logo=react)](https://react.dev)
+[![Design](https://img.shields.io/badge/Aesthetic-Warm%20Cream%20%26%20Ink-FF4D00)](https://abhishek-cloud1.github.io/app/)
+[![DevOps Lab](https://img.shields.io/badge/Flagship-Hybrid%20Cloud%20Mesh-059669?logo=kubernetes)](https://github.com/ABHISHEK-CLOUD1/Devops-lab)
 [![Email Engine](https://img.shields.io/badge/Notification-FormSubmit%20AJAX-008080)](https://formsubmit.co)
 
-A high-performance personal portfolio and developer platform built with **React 19**, **Tailwind CSS**, and modern web engineering standards. The platform is continuously deployed across both global cloud edge CDNs and a private, self-hosted **Proxmox VE** hybrid homelab.
+A bespoke, architectural portfolio and interactive systems platform for **Abhishek Mishra** — Cloud & DevOps Engineer with 4+ years of battle-tested enterprise infrastructure experience (400+ physical and virtual servers, US & UK operations).
 
 ---
 
-## 🌐 Live Endpoints & Multi-Channel Deployment Mesh
+## 🎨 New Architectural Design System
 
-| Environment / Channel | Platform & Routing | Endpoint URL | Status / Description |
-|---|---|---|---|
-| **Global Edge (Recommended)** | **GitHub Pages** (Fastly Global CDN) | [https://abhishek-cloud1.github.io/app/](https://abhishek-cloud1.github.io/app/) | 🟢 **Live & Verified** — Zero gates, permanent, instant load |
-| **Local Homelab (Docker)** | **Proxmox VE CT108** (`10.10.10.108`) | [http://192.168.155.139:8080/](http://192.168.155.139:8080/) | 🟢 **Live** — Self-hosted on 2GB RAM container with Nginx SPA |
-| **Cloudflare Zero-Trust Edge** | **Cloudflare Tunnel** (`cloudflared`) | [Cloudflare Live Tunnel](https://necessary-lauderdale-behaviour-profits.trycloudflare.com) | 🟢 **Live** — Direct HTTPS reverse tunnel into CT108 container |
-| **Named Quick Tunnel** | **Localtunnel** (`loca.lt`) | [https://abhishekmishra.loca.lt](https://abhishekmishra.loca.lt) | 🟢 **Live** — Custom name tunnel (requires one-time IP click) |
-| **GitOps Control Plane** | **Argo CD & K3s (`CT109`)** | [https://192.168.155.142:30443](https://192.168.155.142:30443) | 🟢 **Healthy / Synced** — Application `portfolio-website` |
-| **Continuous Integration** | **Jenkins Engine (`CT102`)** | [http://10.10.10.102:8080/](http://10.10.10.102:8080/) | 🟢 **Build #41 SUCCESS** — Automated SCM polling & sync |
+* **Color Palette**: Warm ivory cream (`#FBF9F5`) and pure white (`#FFFFFF`) layered cards paired with high-contrast rich ink typography (`#121316`) and sharp architectural borders (`border-[#E4E0D5]` / `border-[#121316]`).
+* **Vibrant Popping Accents**:
+  * **Electric Royal Blue** (`#0052FF`): Primary brand accents, interactive active states, and navigation highlights.
+  * **Safety Orange** (`#FF4D00`): High-energy visual pops, flagship architecture badges, and critical highlights.
+  * **Emerald Green** (`#059669`): Real-time live status indicators and telemetry verification marks.
+* **Refined Typography & Proportions**: Balanced, natural font sizing (no giant oversized text) using modern geometric *Space Grotesk*, monospace *Space Mono*, and clean hierarchy.
 
 ---
 
-## 🎨 Architectural & UI/UX Design System
+## 🌟 Dual-Core Engineering Competency
 
-### 1. Aesthetic Design Language
-* **Color Palette**: Deep space obsidian theme (`#030712`) paired with dynamic cyan (`#22d3ee`) and violet (`#a855f7`) atmospheric radial glows.
-* **Hero Section**:
-  * Removed all legacy full-bleed user photos for a modern, high-contrast, developer-first presentation.
-  * **Interactive Unix Telemetry Card**: A macOS-styled terminal window rendering live system telemetry (`abhishek@hybrid-mesh:~`), status (`10/10 nodes healthy`, K3s, Argo CD v3.6.1, Jenkins, Prometheus), and engineering philosophy.
-  * **Live Availability Badge**: Animated pulsing radar pill (`🟢 Available for Projects & Full-Time Roles • Hybrid Cloud • GitOps`).
-  * **Impact Metrics Banner**: Highlights 10+ Hybrid Nodes Managed, 100% GitOps Automation, 25+ Completed Projects, and 99.9% Uptime Reliability.
-* **Ergonomic Cursor**: Restored native responsive pointer controls (removed blocking `cursor: none` hacks) for crisp interaction on desktop, tablet, and mobile.
-
-### 2. Automated Contact & Email Notification Engine
-* **FormSubmit Integration**: Submissions in the **"Get In Touch"** section make asynchronous AJAX `POST` requests to `https://formsubmit.co/ajax/abhishek010601@gmail.com`.
-* **Structured Payload**: Form data is packaged as a structured email template including sender Name, Email, Subject, and detailed Message.
-* **One-Time Activation Handling**: Intelligent UI detection informs the administrator when an activation link is dispatched.
-* **Direct Fallback**: Secondary one-click direct `mailto:` client button and direct social cards (LinkedIn, GitHub, Instagram).
-
-### 3. Subpath Portability (`/app` and `/`)
-* Configured `"homepage": "https://abhishek-cloud1.github.io/app"` in `package.json`.
-* Nginx configured with `location /app/` alias and root rewrite, ensuring identical assets resolve properly whether accessed on GitHub Pages, Netlify, or local Docker.
-* Includes `.nojekyll` and `404.html` SPA routing fallbacks.
+1. **Cloud, Containers & Declarative GitOps**:
+   * Kubernetes (K3s), Docker, Terraform, Ansible, Argo CD App-of-Apps, Jenkins CI/CD, Oracle Cloud Infrastructure (OCI), Proxmox VE.
+2. **Enterprise Infrastructure & High Availability**:
+   * VMware vSphere 6.x/7.x, ESXi, vCenter, vMotion, HA/DRS, 400+ Windows Server estates (2012–2022), Active Directory (AD DS), GPO hardening, SCCM / ConfigMgr (95%+ patch compliance), and ITIL L2 Incident Management.
 
 ---
 
-## 🛠️ Technology Stack
+## 🚀 Featured Projects
 
-| Layer | Technologies |
-|---|---|
-| **Core Framework** | React 19, JavaScript (ES6+), React DOM |
-| **Build System** | CRACO (Create React App Configuration Override), Webpack 5, Corepack + Yarn 1.22 |
-| **Styling & Theme** | Tailwind CSS 3.4, PostCSS, Autoprefixer, Google Fonts (*Space Grotesk*, *Space Mono*, *Bebas Neue*) |
-| **Component Primitives** | Radix UI (Dialogs, Dropdowns, Tabs, Tooltips, Navigation Menus, Toasters) |
-| **Iconography & Graphics** | Lucide React |
-| **Production Runtime** | Nginx 1.31 Alpine (Multi-stage build) |
-| **Delivery & Edge** | GitHub Pages CDN, Cloudflare Tunnel, Localtunnel, Netlify |
-
----
-
-## 📂 Repository File Structure
-
-```
-├── Dockerfile                  # Multi-stage build (Node 22 Alpine builder -> Nginx Alpine runtime)
-├── nginx.conf                  # Nginx production configuration with SPA routing & /app alias
-├── netlify.toml                # Netlify deployment configuration
-├── package.json                # Project root manifest
-├── README.md                   # Comprehensive platform documentation
-├── frontend/                   # Frontend React Application
-│   ├── package.json            # React dependencies, homepage config & build scripts
-│   ├── craco.config.js         # CRACO build customization
-│   ├── tailwind.config.js      # Tailwind CSS theme tokens & utility extensions
-│   ├── public/
-│   │   ├── index.html          # HTML entry point with metadata, preconnects & SEO tags
-│   │   └── _redirects          # SPA fallback rules
-│   └── src/
-│       ├── App.js              # Application root, architectural vertical grid & components
-│       ├── index.css           # Global Tailwind tokens, animations, custom scrollbar
-│       ├── mock.js             # Structured portfolio datasets, tech stack & projects
-│       └── components/
-│           ├── Header.jsx      # Fixed glassmorphic navigation with live IST clock
-│           ├── Hero.jsx        # Editorial typography, telemetry terminal & stats grid
-│           ├── About.jsx       # Technical narrative, competency pills & architecture cards
-│           ├── Services.jsx    # 5 structured production capability cards with Lucide icons
-│           ├── Projects.jsx    # Featured real-world architectures with repository links
-│           ├── Contact.jsx     # FormSubmit email notification engine & direct channels
-│           ├── Footer.jsx      # Global footer, copyright, and back-to-top button
-│           └── ui/             # Accessible Radix UI design primitives
-```
+* **★ Flagship Architecture: Enterprise Hybrid Cloud & GitOps Mesh (DevOps Lab)**:
+  * 10-node hybrid cloud topology connecting on-premise Proxmox VE hypervisors with Oracle Cloud Infrastructure (OCI).
+  * Declaratively synced via Argo CD v3.6.1 App-of-Apps, automated Jenkins pipelines, and Prometheus telemetry.
+  * [GitHub Repository: ABHISHEK-CLOUD1/Devops-lab](https://github.com/ABHISHEK-CLOUD1/Devops-lab)
+* **Automated Multi-Stage CI/CD Engine**: Jenkins automated pipeline engine with Docker container builds, automated SCM polling, and rollback protection.
+* **Enterprise 400+ Server Wintel & Virtualization Estate**: 99.9% uptime SLA across 400+ physical and virtual servers with vMotion and capacity rightsizing.
+* **Automated SCCM Patch Compliance System**: Boundary groups and automated WSUS maintenance rings elevating patch compliance to 95%+.
+* **Hybrid Observability & SRE Telemetry Mesh**: Centralized Prometheus TSDB scraping 11 hybrid targets with real-time Grafana operational dashboards.
+* **Modern Developer Portfolio Platform**: High-performance React 19 application with automated FormSubmit notification engine and Nginx SPA routing.
 
 ---
 
-## 🚀 Build & Deployment Instructions
+## 📜 Education & Certifications
 
-### 1. Local Development
-```bash
-# Navigate to frontend
-cd frontend
-
-# Enable Corepack and install dependencies
-corepack enable
-yarn install
-
-# Start development server
-yarn start
-# Application runs at http://localhost:3000
-```
-
-### 2. Production Build
-```bash
-cd frontend
-yarn build
-# Compiled static assets output to frontend/build/
-```
-
-### 3. Docker Container Build & Execution
-```bash
-# Build multi-stage production Docker image
-docker build -t abhis01/abhi-web-app:latest .
-
-# Run container on port 8080
-docker run -d \
-  --name my-custom-website \
-  -p 8080:80 \
-  --restart always \
-  abhis01/abhi-web-app:latest
-
-# Verify container health
-curl -I http://localhost:8080/
-```
-
-### 4. GitHub Pages Deployment (`gh-pages` branch)
-```bash
-# From compiled build directory
-cd frontend/build
-touch .nojekyll
-cp index.html 404.html
-
-git init
-git checkout -b gh-pages
-git add .
-git commit -m "Deploy production build to GitHub Pages"
-git remote add origin https://github.com/ABHISHEK-CLOUD1/app.git
-git push -f origin gh-pages
-```
+* **M.Tech – Computer Science** (In Progress, Completes in 2027) — *Birla Institute of Technology and Science (BITS), Pilani*
+* **B.C.A – Bachelor of Computer Applications** (2019 – 2022) — *Dr. Virendra Swarup Institute of Computer Studies, Kanpur*
+* **Microsoft AZ-900**: Azure Fundamentals
+* **AWS Certified Cloud Practitioner**
+* **AWS Architecting on AWS** — *Trainocate Group*
+* **AWS & Microsoft & Google Digital Badges**: Cloud & AI Essentials
 
 ---
 
-## 🔐 Contact & Email Pipeline Verification
+## 📞 Direct Contact
 
-To test the automated email dispatch:
-1. Open [https://abhishek-cloud1.github.io/app/#contact](https://abhishek-cloud1.github.io/app/#contact).
-2. Enter your Name, Email, Subject, and Message.
-3. Click **Send Message**.
-4. The system sends an AJAX POST to FormSubmit. Upon first run, click the **"Activate Form"** email sent to `abhishek010601@gmail.com`. All subsequent submissions will be delivered instantly to Abhishek's inbox.
+* **Email**: `Abhishekmishra0203426@gmail.com`
+* **Phone / WhatsApp**: `+91-7880371643`
+* **Location**: Kanpur, U.P., India
+* **LinkedIn**: [Abhishek Mishra](https://www.linkedin.com/in/abhishek-mishra-a749b3220)
+* **GitHub**: [@ABHISHEK-CLOUD1](https://github.com/ABHISHEK-CLOUD1)

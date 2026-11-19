@@ -26,31 +26,27 @@ export const stats = [
 export const skillCategories = [
   {
     category: "Cloud & DevOps",
-    skills: ["Kubernetes (K3s)", "Docker", "Terraform", "Ansible", "Argo CD", "Jenkins CI/CD", "Oracle Cloud (OCI)", "Proxmox VE"]
+    skills: ["Kubernetes (K3s)", "Docker", "Terraform", "Ansible", "Argo CD (GitOps)", "Jenkins CI/CD", "Oracle Cloud (OCI)", "Proxmox VE"]
   },
   {
     category: "Virtualization & Systems",
-    skills: ["VMware vSphere 6.x/7.x", "ESXi", "vCenter", "vMotion", "HA / DRS", "Windows Server (2012–2022)", "Server Core"]
+    skills: ["VMware vSphere 7.x", "ESXi & vCenter", "vMotion & HA/DRS", "Windows Server 2012–2022", "Server Core"]
   },
   {
-    category: "Identity & Governance",
-    skills: ["Active Directory (AD DS)", "Group Policy (GPO)", "DNS & DHCP", "OU Hierarchy", "AD Replication", "Domain Trusts", "RBAC"]
+    category: "Identity & Security",
+    skills: ["Active Directory (AD DS)", "Group Policy (GPO)", "GPO Security Hardening", "DNS & DHCP", "Domain Trusts", "RBAC"]
   },
   {
-    category: "Endpoint & Compliance",
-    skills: ["SCCM / ConfigMgr", "Software Deployment", "WSUS Patch Rings", "Compliance Baselines", "Asset Inventory"]
+    category: "Endpoint & Patching",
+    skills: ["SCCM / ConfigMgr", "WSUS Patch Automation", "Software Packaging & Distribution"]
   },
   {
     category: "Observability & SRE",
-    skills: ["Prometheus", "Grafana", "Event Viewer", "Performance Monitor", "Log Analytics", "SolarWinds", "Splunk"]
+    skills: ["Prometheus", "Grafana", "Splunk", "SolarWinds"]
   },
   {
-    category: "Scripting & Automation",
-    skills: ["PowerShell Automation", "Bash Scripting", "AD Queries", "Inventory Reporting", "Scheduled Runbooks"]
-  },
-  {
-    category: "ITIL & Operations",
-    skills: ["Incident Management (L2)", "Change Management", "Problem Management", "ServiceNow", "Symphony Summit"]
+    category: "Automation & Scripting",
+    skills: ["PowerShell Automation", "Bash Scripting", "Python"]
   }
 ];
 

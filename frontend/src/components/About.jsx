@@ -131,14 +131,14 @@ const About = () => {
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
             <div>
               <h3 className="font-sans font-bold text-xl text-[#121316]">
-                Technical Competencies &amp; Toolchain
+                Core Technical Competencies
               </h3>
               <p className="font-mono text-xs text-[#767A85] mt-1">
-                Filter by specialized domains to explore technical proficiencies
+                Core engineering tools, platforms &amp; cloud technologies
               </p>
             </div>
             <span className="font-mono text-xs text-[#0052FF] font-semibold bg-[#0052FF]/10 px-3 py-1 rounded-full border border-[#0052FF]/20 self-start sm:self-auto">
-              {displayedSkills.length} Skills Listed
+              {displayedSkills.length} Core Skills Listed
             </span>
           </div>
 

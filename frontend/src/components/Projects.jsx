@@ -5,7 +5,7 @@ import { ArrowUpRight, Github, ExternalLink, Award, Sparkles, CheckCircle2, Laye
 const Projects = () => {
   const [filter, setFilter] = useState('All');
 
-  const categories = ['All', 'Cloud & DevOps', 'CI/CD & Automation', 'Enterprise Infrastructure', 'SRE & Monitoring'];
+  const categories = ['All', ...Array.from(new Set(projects.map(p => p.category)))];
 
   const filteredProjects = filter === 'All'
     ? projects
@@ -213,7 +213,7 @@ const Projects = () => {
                     className="inline-flex items-center gap-1.5 font-mono text-xs font-semibold text-[#121316] hover:text-[#0052FF] transition-colors"
                   >
                     <Github size={14} />
-                    <span>View Repository</span>
+                    <span>{project.repoName ? `github/${project.repoName}` : 'View Repository'}</span>
                   </a>
                 ) : (
                   <span className="font-mono text-xs text-[#767A85]">

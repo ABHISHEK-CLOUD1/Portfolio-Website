@@ -41,7 +41,8 @@ A bespoke, architectural portfolio and interactive systems platform for **Abhish
 * **Enterprise 400+ Server Wintel & Virtualization Estate**: 99.9% uptime SLA across 400+ physical and virtual servers with vMotion and capacity rightsizing.
 * **Automated SCCM Patch Compliance System**: Boundary groups and automated WSUS maintenance rings elevating patch compliance to 95%+.
 * **Hybrid Observability & SRE Telemetry Mesh**: Centralized Prometheus TSDB scraping 11 hybrid targets with real-time Grafana operational dashboards.
-* **Modern Developer Portfolio Platform**: High-performance React 19 application with automated FormSubmit notification engine and Nginx SPA routing.
+* **Project Lensbridge**: Open-source declarative micro-app rendering runtime for smart glasses and wearable displays (Monochrome Waveguide, Micro-LED & Audio-only). [GitHub: ABHISHEK-CLOUD1/lensbridge](https://github.com/ABHISHEK-CLOUD1/lensbridge)
+* **Portfolio Website**: High-performance React 19 architectural platform with automated FormSubmit notification engine and GitHub Pages edge delivery. [GitHub: ABHISHEK-CLOUD1/portfolio-website](https://github.com/ABHISHEK-CLOUD1/portfolio-website)
 
 ---
 

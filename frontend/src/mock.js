@@ -177,19 +177,38 @@ export const projects = [
   },
   {
     id: 6,
-    title: "Modern Developer Portfolio & Web Platform",
-    subtitle: "Production React 19 Single Page App",
-    description: "High-performance React application engineered with Tailwind CSS, FormSubmit AJAX notification engine, multi-stage Docker containerization, and deployed on global edge CDN.",
-    category: "Web & Platform",
-    badge: "Web Platform",
+    title: "Portfolio Website",
+    subtitle: "Production React 19 Systems Showcase",
+    description: "High-performance developer platform and interactive systems showcase engineered with React 19, Tailwind CSS, FormSubmit AJAX notification engine, multi-stage Docker containerization, and deployed on global edge CDN.",
+    category: "Web & Platforms",
+    badge: "Portfolio Website",
     isFlagship: false,
     highlights: [
-      "Clean cream/ink architectural design with interactive consoles",
-      "Automated FormSubmit email notification dispatch",
-      "Multi-stage Dockerized build with Nginx SPA routing"
+      "Clean cream & ink architectural design with interactive systems workbench",
+      "Automated FormSubmit email notification dispatch engine",
+      "Multi-stage Dockerized build with Nginx SPA routing and GitHub Pages deployment"
     ],
     technologies: ["React 19", "Tailwind CSS", "Docker", "Nginx", "GitHub Pages"],
-    github: "https://github.com/ABHISHEK-CLOUD1/app"
+    github: "https://github.com/ABHISHEK-CLOUD1/portfolio-website",
+    repoName: "portfolio-website"
+  },
+  {
+    id: 7,
+    title: "Project Lensbridge",
+    subtitle: "Universal Smart Glasses Micro-App Runtime",
+    description: "Open-source declarative micro-app rendering prototype for smart glasses and wearable displays. Enables 'write once, run on any smart glasses' by compiling a single lightweight JSON spec into target hardware capabilities at runtime.",
+    category: "Wearables & Systems",
+    badge: "Smart Glasses XR",
+    isFlagship: false,
+    highlights: [
+      "Declarative JSON spec adapting layout & text to hardware capabilities at runtime",
+      "Multi-tier display support: Monochrome Waveguide, Full-Color Micro-LED & Audio-only",
+      "Built-in browser simulator with live Demos (Teleprompter, Translation, Navigation)",
+      "Web Speech API integration for audio speech synthesis on screenless wearables"
+    ],
+    technologies: ["JavaScript", "Declarative UI", "Smart Glasses / XR", "Web Speech API", "JSON Spec", "HTML5"],
+    github: "https://github.com/ABHISHEK-CLOUD1/lensbridge",
+    repoName: "lensbridge"
   }
 ];
 

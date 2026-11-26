@@ -1,9 +1,9 @@
 # Abhishek Mishra — Cloud & DevOps Engineer | Enterprise Systems Architect
 
-[![Production Status](https://img.shields.io/badge/Status-Operational%20%2F%20Live-brightgreen)](https://abhishek-cloud1.github.io/app/)
-[![GitHub Pages](https://img.shields.io/badge/Deployed%20To-GitHub%20Pages-blue?logo=github)](https://abhishek-cloud1.github.io/app/)
+[![Production Status](https://img.shields.io/badge/Status-Operational%20%2F%20Live-brightgreen)](https://abhishek-cloud1.github.io/Portfolio-Website/)
+[![GitHub Pages](https://img.shields.io/badge/Deployed%20To-GitHub%20Pages-blue?logo=github)](https://abhishek-cloud1.github.io/Portfolio-Website/)
 [![Frontend](https://img.shields.io/badge/Frontend-React%2019%20%2B%20Tailwind%203.4-0052FF?logo=react)](https://react.dev)
-[![Design](https://img.shields.io/badge/Aesthetic-Warm%20Cream%20%26%20Ink-FF4D00)](https://abhishek-cloud1.github.io/app/)
+[![Design](https://img.shields.io/badge/Aesthetic-Warm%20Cream%20%26%20Ink-FF4D00)](https://abhishek-cloud1.github.io/Portfolio-Website/)
 [![DevOps Lab](https://img.shields.io/badge/Flagship-Hybrid%20Cloud%20Mesh-059669?logo=kubernetes)](https://github.com/ABHISHEK-CLOUD1/Devops-lab)
 [![Email Engine](https://img.shields.io/badge/Notification-FormSubmit%20AJAX-008080)](https://formsubmit.co)
 
@@ -42,7 +42,7 @@ A bespoke, architectural portfolio and interactive systems platform for **Abhish
 * **Automated SCCM Patch Compliance System**: Boundary groups and automated WSUS maintenance rings elevating patch compliance to 95%+.
 * **Hybrid Observability & SRE Telemetry Mesh**: Centralized Prometheus TSDB scraping 11 hybrid targets with real-time Grafana operational dashboards.
 * **Project Lensbridge**: Open-source declarative micro-app rendering runtime for smart glasses and wearable displays (Monochrome Waveguide, Micro-LED & Audio-only). [GitHub: ABHISHEK-CLOUD1/lensbridge](https://github.com/ABHISHEK-CLOUD1/lensbridge)
-* **Portfolio Website**: High-performance React 19 architectural platform with automated FormSubmit notification engine and GitHub Pages edge delivery. [GitHub: ABHISHEK-CLOUD1/portfolio-website](https://github.com/ABHISHEK-CLOUD1/portfolio-website)
+* **Portfolio Website**: High-performance React 19 architectural platform with automated FormSubmit notification engine and GitHub Pages edge delivery. [GitHub: ABHISHEK-CLOUD1/Portfolio-Website](https://github.com/ABHISHEK-CLOUD1/Portfolio-Website)
 
 ---
 

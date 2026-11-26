@@ -189,8 +189,8 @@ export const projects = [
       "Multi-stage Dockerized build with Nginx SPA routing and GitHub Pages deployment"
     ],
     technologies: ["React 19", "Tailwind CSS", "Docker", "Nginx", "GitHub Pages"],
-    github: "https://github.com/ABHISHEK-CLOUD1/portfolio-website",
-    repoName: "portfolio-website"
+    github: "https://github.com/ABHISHEK-CLOUD1/Portfolio-Website",
+    repoName: "Portfolio-Website"
   },
   {
     id: 7,

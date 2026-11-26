@@ -3,24 +3,25 @@
 @tailwind utilities;
 
 /* ── Google Fonts ── */
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap');
 
 /* ── Base ── */
 html {
     scroll-behavior: smooth;
+    background-color: #ECECEC;
 }
 
 body {
     margin: 0;
-    font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: 'Space Grotesk', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: #FBF9F5;
-    color: #121316;
+    background-color: #ECECEC;
+    color: #181818;
     overflow-x: hidden;
 }
 
-/* ── Typography ── */
+/* ── Typography & Display Faces ── */
 .font-display {
     font-family: 'Bebas Neue', sans-serif;
     letter-spacing: 0.04em;
@@ -30,63 +31,34 @@ body {
     font-family: 'Space Mono', monospace;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'Space Grotesk', sans-serif;
-    letter-spacing: -0.02em;
-    color: #121316;
-}
-
-/* ── Design Tokens ── */
-@layer base {
-    :root {
-        --background: 40 33% 97%;
-        --foreground: 220 10% 8%;
-        --card: 0 0% 100%;
-        --card-foreground: 220 10% 8%;
-        --popover: 0 0% 100%;
-        --popover-foreground: 220 10% 8%;
-        --primary: 221 100% 50%;
-        --primary-foreground: 0 0% 100%;
-        --secondary: 40 20% 93%;
-        --secondary-foreground: 220 10% 15%;
-        --muted: 40 15% 91%;
-        --muted-foreground: 220 8% 46%;
-        --accent: 18 100% 50%;
-        --accent-foreground: 0 0% 100%;
-        --destructive: 0 84% 60%;
-        --destructive-foreground: 0 0% 98%;
-        --border: 40 18% 87%;
-        --input: 40 18% 87%;
-        --ring: 221 100% 50%;
-        --radius: 12px;
-    }
-}
-
-/* ── Selection ── */
+/* ── Custom Selection ── */
 ::selection {
-    background: #0052FF;
+    background: #FF4949;
     color: #ffffff;
 }
 
-/* ── Scrollbar ── */
+/* ── Subtle Scrollbar ── */
 ::-webkit-scrollbar {
-    width: 6px;
+    width: 5px;
 }
 ::-webkit-scrollbar-track {
-    background: #FBF9F5;
+    background: #ECECEC;
 }
 ::-webkit-scrollbar-thumb {
-    background: #D5CFBE;
-    border-radius: 4px;
+    background: #C4C4C4;
+    border-radius: 2px;
 }
 ::-webkit-scrollbar-thumb:hover {
-    background: #0052FF;
+    background: #FF4949;
 }
 
-/* ── Subtle Architectural Grid Pattern ── */
-.bg-cream-grid {
-    background-image: 
-        linear-gradient(to right, rgba(18, 19, 22, 0.04) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(18, 19, 22, 0.04) 1px, transparent 1px);
-    background-size: 32px 32px;
+/* ── Swiss Fade Masks (huyml.co signature) ── */
+.mask-fade-y {
+    mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+    -webkit-mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+}
+
+/* ── Tilted Perspective Card effect ── */
+.perspective-card {
+    perspective: 1000px;
 }

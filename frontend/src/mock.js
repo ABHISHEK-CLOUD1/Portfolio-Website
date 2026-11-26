@@ -1,295 +1,177 @@
-// Profile data for Abhishek Mishra | Cloud & DevOps Engineer
+// Profile data for Abhishek Mishra
+// Minimalist, award-winning studio aesthetic inspired by huyml.co
 
 export const personalInfo = {
   name: "Abhishek Mishra",
   firstName: "Abhishek",
   lastName: "Mishra",
   title: "Cloud & DevOps Engineer",
-  badge: "Cloud & DevOps Engineer • Enterprise Systems Specialist",
-  tagline: "Engineering resilient hybrid cloud infrastructure, declarative GitOps automation, and high-availability enterprise environments.",
+  roleSubtitle: "Enterprise Systems • Hybrid GitOps • Prototypes",
+  location: "Kanpur, India",
+  timezone: "IST",
+  coordinates: "26.4499° N, 80.3319° E",
   email: "Abhishekmishra0203426@gmail.com",
   phone: "+91-7880371643",
-  location: "Kanpur, U.P., India",
   status: "Available for Cloud & DevOps Roles",
+  availabilityNotice: "Open to High-Impact Opportunities",
   linkedin: "https://www.linkedin.com/in/abhishek-mishra-a749b3220?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
   github: "https://github.com/ABHISHEK-CLOUD1",
-  about: "Cloud & DevOps Engineer with 4+ years of battle-tested enterprise infrastructure experience across 400+ physical and virtual servers. I specialize in bridging high-availability virtualization, automated Infrastructure as Code (Terraform, Ansible), container orchestration (Kubernetes K3s, Docker), and declarative GitOps pipelines (Argo CD, Jenkins) with enterprise-grade 99.9% uptime SLA resilience. Currently pursuing M.Tech in Computer Science at BITS Pilani."
+  shortBio: "Cloud & DevOps Engineer bridging 4+ years of battle-tested enterprise infrastructure (400+ physical and virtual servers) with declarative GitOps pipelines, hybrid cloud clusters, and wearable software prototypes. Currently pursuing M.Tech in Computer Science at BITS Pilani.",
+  manifesto: [
+    "400+ ENTERPRISE SERVERS OPERATED WITH 99.9% UPTIME.",
+    "PROXMOX VE + ORACLE CLOUD HYBRID GITOPS MESH.",
+    "WRITE ONCE, RUN ON ANY SMART GLASSES PROTOTYPING.",
+    "DETERMINISTIC SYSTEMS OVER TEMPORARY HACKS."
+  ]
 };
 
 export const stats = [
-  { label: "Enterprise Servers Managed", value: "400+" },
-  { label: "Production SLA Uptime", value: "99.9%" },
-  { label: "Patch Compliance Rate", value: "95%+" },
-  { label: "Hybrid Cluster Nodes", value: "10+" }
-];
-
-export const skillCategories = [
-  {
-    category: "Cloud & DevOps",
-    skills: ["Kubernetes (K3s)", "Docker", "Terraform", "Ansible", "Argo CD (GitOps)", "Jenkins CI/CD", "Oracle Cloud (OCI)", "Proxmox VE"]
-  },
-  {
-    category: "Virtualization & Systems",
-    skills: ["VMware vSphere 7.x", "ESXi & vCenter", "vMotion & HA/DRS", "Windows Server 2012–2022", "Server Core"]
-  },
-  {
-    category: "Identity & Security",
-    skills: ["Active Directory (AD DS)", "Group Policy (GPO)", "GPO Security Hardening", "DNS & DHCP", "Domain Trusts", "RBAC"]
-  },
-  {
-    category: "Endpoint & Patching",
-    skills: ["SCCM / ConfigMgr", "WSUS Patch Automation", "Software Packaging & Distribution"]
-  },
-  {
-    category: "Observability & SRE",
-    skills: ["Prometheus", "Grafana", "Splunk", "SolarWinds"]
-  },
-  {
-    category: "Automation & Scripting",
-    skills: ["PowerShell Automation", "Bash Scripting", "Python"]
-  }
-];
-
-export const services = [
-  {
-    id: 1,
-    title: "Hybrid Cloud & Infrastructure as Code",
-    description: "Designing reproducible, fault-tolerant infrastructure connecting on-premise Proxmox VE hypervisors with public Oracle Cloud Infrastructure (OCI) using Terraform and Ansible.",
-    icon: "Cloud",
-    tag: "IaC & Multi-Cloud"
-  },
-  {
-    id: 2,
-    title: "Kubernetes Orchestration & GitOps",
-    description: "Orchestrating containerized workloads with K3s and implementing true GitOps with Argo CD App-of-Apps, declarative desired-state synchronization, and self-healing rollouts.",
-    icon: "Cpu",
-    tag: "GitOps Continuous Delivery"
-  },
-  {
-    id: 3,
-    title: "Continuous Integration & Delivery (CI/CD)",
-    description: "Architecting automated Jenkins pipelines with multi-stage Docker builds, automated image distribution, code validation, and zero-downtime deployment workflows.",
-    icon: "GitBranch",
-    tag: "Automated Pipelines"
-  },
-  {
-    id: 4,
-    title: "Enterprise Wintel & VMware Virtualization",
-    description: "Administering 400+ physical and virtual Windows Servers (2012–2022) with VMware vSphere 7.x, performing non-disruptive vMotion, capacity rightsizing, and HA/DRS fault-tolerance.",
-    icon: "Server",
-    tag: "400+ Server Estates"
-  },
-  {
-    id: 5,
-    title: "Active Directory Governance & Security",
-    description: "Enterprise AD DS management: user/group lifecycle, OU hierarchies, GPO hardening, replication topologies, and proven leadership cleansing 500+ stale accounts and redundant policies.",
-    icon: "Shield",
-    tag: "Enterprise Identity"
-  },
-  {
-    id: 6,
-    title: "SCCM / ConfigMgr & Patch Compliance",
-    description: "Building deployment packages, boundary groups, and automated maintenance rings—driving organization-wide patch compliance from ~70% to 95%+ with audit-ready dashboards.",
-    icon: "Activity",
-    tag: "95%+ Compliance"
-  }
+  { label: "Servers Administered", value: "400+" },
+  { label: "Uptime Reliability", value: "99.9%" },
+  { label: "SCCM Patch Rate", value: "95%+" },
+  { label: "GitOps Mesh Nodes", value: "10+" }
 ];
 
 export const projects = [
   {
-    id: 1,
-    title: "Enterprise Hybrid Cloud & GitOps Mesh",
-    subtitle: "Flagship DevOps Lab Architecture",
-    description: "A production-grade 10-node hybrid cloud topology connecting on-premise Proxmox VE hypervisors with Oracle Cloud Infrastructure (OCI). Declaratively managed with K3s Kubernetes, Argo CD App-of-Apps GitOps, Jenkins automated pipelines, and Prometheus observability.",
-    category: "Cloud & DevOps",
-    badge: "Flagship Project",
-    isFlagship: true,
-    highlights: [
-      "10-node hybrid cluster bridging Proxmox CTs & OCI cloud compute",
-      "Argo CD App-of-Apps declarative synchronization engine",
-      "Automated Jenkins CI/CD pipeline building & deploying services",
-      "Full Prometheus TSDB & Grafana telemetry scraping 11 endpoints"
-    ],
-    technologies: ["Kubernetes (K3s)", "Argo CD", "Terraform", "Ansible", "Oracle Cloud (OCI)", "Proxmox VE", "Jenkins", "Prometheus"],
-    github: "https://github.com/ABHISHEK-CLOUD1/Devops-lab"
+    id: "01",
+    index: "01 / 06",
+    title: "DEVOPS LAB MESH",
+    slug: "devops-lab",
+    repoName: "Devops-lab",
+    category: "Hybrid Cloud & GitOps",
+    role: "Lead Architect",
+    launch: "2026",
+    status: "Active Production Mesh",
+    swatches: ["#FF4949", "#0052FF", "#181818"],
+    summary: "10-node hybrid cloud connecting on-premise Proxmox VE hypervisors with Oracle Cloud Infrastructure (OCI). Managed declaratively via K3s Kubernetes, Argo CD App-of-Apps, automated Jenkins pipelines, and Prometheus telemetry.",
+    technologies: ["Kubernetes", "Argo CD", "Terraform", "Ansible", "OCI", "Proxmox", "Jenkins", "Prometheus"],
+    github: "https://github.com/ABHISHEK-CLOUD1/Devops-lab",
+    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=900&auto=format&fit=crop&q=80",
+    highlights: "10 Hybrid Nodes • Zero-Drift Sync • 11 Telemetry Targets"
   },
   {
-    id: 2,
-    title: "Automated Multi-Stage CI/CD Engine",
-    subtitle: "Production Jenkins Pipeline Engine",
-    description: "Production Jenkins automation engine executing Terraform infrastructure validation, multi-stage Docker builds, container image verification, and zero-downtime service deployment.",
-    category: "CI/CD & Automation",
-    badge: "Automation",
-    isFlagship: false,
-    highlights: [
-      "Automated pipeline triggers on Git webhook events",
-      "Multi-stage Docker builds minimizing production image footprint",
-      "Automated health checks and rollback on deployment failure"
-    ],
-    technologies: ["Jenkins", "Docker", "Ansible", "Bash", "Linux", "Git"],
-    github: "https://github.com/ABHISHEK-CLOUD1/Devops-lab"
-  },
-  {
-    id: 3,
-    title: "Enterprise 400+ Server Wintel & Virtualization Estate",
-    subtitle: "Mission-Critical US & UK Workload Management",
-    description: "4-year administration of 400+ physical and virtual enterprise Windows Server environments (2012–2022) hosted on VMware vSphere 6.x/7.x. Maintained 99.9% uptime SLA through proactive capacity rightsizing, vMotion, and structured L2 incident response.",
-    category: "Enterprise Infrastructure",
-    badge: "Enterprise Core",
-    isFlagship: false,
-    highlights: [
-      "Administered 400+ Windows Servers with 99.9% uptime availability",
-      "Executed live vMotion migrations with zero application disruption",
-      "Mitigated snapshot sprawl and optimized datastore capacity headroom"
-    ],
-    technologies: ["VMware vSphere", "ESXi / vCenter", "Windows Server", "PowerShell", "vMotion", "HA/DRS"]
-  },
-  {
-    id: 4,
-    title: "Automated SCCM Patch Compliance & Baseline Modernization",
-    subtitle: "Enterprise Patch Management System",
-    description: "Architected software deployment packages, compliance baselines, and boundary groups in Microsoft Endpoint Configuration Manager (SCCM), elevating enterprise patch compliance from ~70% to 95%+ across distributed branch sites.",
-    category: "Endpoint & Compliance",
-    badge: "95%+ Compliance",
-    isFlagship: false,
-    highlights: [
-      "Elevated organization patch compliance from ~70% to 95%+",
-      "Established automated phased maintenance rings (Pilot -> Prod)",
-      "Created executive audit-ready compliance dashboards & reports"
-    ],
-    technologies: ["SCCM / ConfigMgr", "WSUS", "Group Policy (GPO)", "PowerShell", "Reporting"]
-  },
-  {
-    id: 5,
-    title: "Hybrid Observability & SRE Telemetry Mesh",
-    subtitle: "Real-time Metrics & Alerting",
-    description: "Centralized Prometheus TSDB scraping 11 hybrid targets across local hypervisors and public cloud VMs with real-time Grafana operational dashboards and incident alerting.",
-    category: "SRE & Monitoring",
-    badge: "Observability",
-    isFlagship: false,
-    highlights: [
-      "11 targets scraped across hybrid cloud environments",
-      "Real-time Grafana dashboards for node, container, and cluster metrics",
-      "Proactive threshold alerts preventing resource starvation"
-    ],
-    technologies: ["Prometheus", "Grafana", "Node Exporter", "cAdvisor", "Alertmanager"],
-    github: "https://github.com/ABHISHEK-CLOUD1/Devops-lab"
-  },
-  {
-    id: 6,
-    title: "Portfolio Website",
-    subtitle: "Production React 19 Systems Showcase",
-    description: "High-performance developer platform and interactive systems showcase engineered with React 19, Tailwind CSS, FormSubmit AJAX notification engine, multi-stage Docker containerization, and deployed on global edge CDN.",
-    category: "Web & Platforms",
-    badge: "Portfolio Website",
-    isFlagship: false,
-    highlights: [
-      "Clean cream & ink architectural design with interactive systems workbench",
-      "Automated FormSubmit email notification dispatch engine",
-      "Multi-stage Dockerized build with Nginx SPA routing and GitHub Pages deployment"
-    ],
-    technologies: ["React 19", "Tailwind CSS", "Docker", "Nginx", "GitHub Pages"],
-    github: "https://github.com/ABHISHEK-CLOUD1/Portfolio-Website",
-    repoName: "Portfolio-Website"
-  },
-  {
-    id: 7,
-    title: "Project Lensbridge",
-    subtitle: "Universal Smart Glasses Micro-App Runtime",
-    description: "Open-source declarative micro-app rendering prototype for smart glasses and wearable displays. Enables 'write once, run on any smart glasses' by compiling a single lightweight JSON spec into target hardware capabilities at runtime.",
-    category: "Wearables & Systems",
-    badge: "Smart Glasses XR",
-    isFlagship: false,
-    highlights: [
-      "Declarative JSON spec adapting layout & text to hardware capabilities at runtime",
-      "Multi-tier display support: Monochrome Waveguide, Full-Color Micro-LED & Audio-only",
-      "Built-in browser simulator with live Demos (Teleprompter, Translation, Navigation)",
-      "Web Speech API integration for audio speech synthesis on screenless wearables"
-    ],
+    id: "02",
+    index: "02 / 06",
+    title: "PROJECT LENSBRIDGE",
+    slug: "lensbridge",
+    repoName: "lensbridge",
+    category: "Smart Glasses XR",
+    role: "System Designer & Author",
+    launch: "2026",
+    status: "Open Source Prototype",
+    swatches: ["#FF4949", "#111111", "#ECECEC"],
+    summary: "Write once, run on any smart glasses — open declarative micro-app runtime adapting a lightweight JSON specification to monochrome waveguides, full-color micro-LEDs, and audio wearables at runtime.",
     technologies: ["JavaScript", "Declarative UI", "Smart Glasses / XR", "Web Speech API", "JSON Spec", "HTML5"],
     github: "https://github.com/ABHISHEK-CLOUD1/lensbridge",
-    repoName: "lensbridge"
+    image: "https://images.unsplash.com/photo-1593508512255-86ab42a8e620?w=900&auto=format&fit=crop&q=80",
+    highlights: "Waveguide & Micro-LED Display Adapters • Live Teleprompter Demo"
+  },
+  {
+    id: "03",
+    index: "03 / 06",
+    title: "PORTFOLIO WEBSITE",
+    slug: "portfolio-website",
+    repoName: "Portfolio-Website",
+    category: "Architectural Platform",
+    role: "Full-Stack Engineer",
+    launch: "2026",
+    status: "Live on GitHub Pages",
+    swatches: ["#181818", "#ECECEC", "#FF4949"],
+    summary: "Minimalist, editorial developer platform inspired by huyml.co. Built with React 19, Tailwind CSS, FormSubmit AJAX notifications, Dockerized runtime, and automated edge CDN publishing.",
+    technologies: ["React 19", "Tailwind CSS", "Docker", "Nginx", "GitHub Pages"],
+    github: "https://github.com/ABHISHEK-CLOUD1/Portfolio-Website",
+    image: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=900&auto=format&fit=crop&q=80",
+    highlights: "Studio Paper & Ink Design • Spatial Work Reel • Zero UI Bloat"
+  },
+  {
+    id: "04",
+    index: "04 / 06",
+    title: "400+ ENTERPRISE WINTEL ESTATE",
+    slug: "enterprise-infrastructure",
+    repoName: "enterprise-infrastructure",
+    category: "Enterprise Infrastructure",
+    role: "Wintel & VMware L2 Administrator",
+    launch: "2022–2026",
+    status: "4+ Years Enterprise Support",
+    swatches: ["#0078D4", "#181818", "#ECECEC"],
+    summary: "High-availability administration of 400+ physical and virtual Windows Servers (2012–2022) with VMware vSphere 7.x, vMotion, GPO security baseline enforcement, and 99.9% uptime SLA across US & UK operations.",
+    technologies: ["VMware vSphere", "Windows Server", "ESXi / vCenter", "Active Directory", "SCCM", "PowerShell"],
+    github: "https://github.com/ABHISHEK-CLOUD1",
+    image: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=900&auto=format&fit=crop&q=80",
+    highlights: "99.9% Uptime SLA • 95%+ Patch Compliance • 500+ AD Accounts Cleaned"
+  },
+  {
+    id: "05",
+    index: "05 / 06",
+    title: "SOUL ANDROID APPLICATION",
+    slug: "soul-android",
+    repoName: "SoUL---An-Android-App-",
+    category: "Mobile Platform",
+    role: "Mobile App Engineer",
+    launch: "2024",
+    status: "Native Mobile Build",
+    swatches: ["#10B981", "#181818", "#ECECEC"],
+    summary: "Native Android application engineered for responsive client performance, localized database caching, and clean modern material design interactions.",
+    technologies: ["Android SDK", "Java", "XML Layouts", "SQLite", "Mobile UX"],
+    github: "https://github.com/ABHISHEK-CLOUD1/SoUL---An-Android-App-",
+    image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=900&auto=format&fit=crop&q=80",
+    highlights: "Offline Local Persistence • Responsive Device Lifecycle"
+  },
+  {
+    id: "06",
+    index: "06 / 06",
+    title: "POETRY BY ABHISHEK",
+    slug: "poetry-by-abhishek",
+    repoName: "Poetry-by-Abhishek",
+    category: "Creative Literature",
+    role: "Author & Creator",
+    launch: "2025–2026",
+    status: "Open Source Writing",
+    swatches: ["#4B5563", "#181818", "#ECECEC"],
+    summary: "A personal repository of original poems, creative verses, and reflective prose exploring engineering, human connection, solitude, and digital craftsmanship.",
+    technologies: ["Creative Writing", "Poetry", "Literature", "Markdown"],
+    github: "https://github.com/ABHISHEK-CLOUD1/Poetry-by-Abhishek",
+    image: "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=900&auto=format&fit=crop&q=80",
+    highlights: "Original Verse Collection • Creative Reflections"
   }
 ];
 
-export const experience = [
-  {
-    role: "Wintel & VMware Administrator – Level 2",
-    company: "Enterprise IT Infrastructure (US & UK Workloads)",
-    period: "4 Years Experience",
-    summary: "Led L2 operations across 400+ physical and virtual enterprise Windows Server and VMware environments, maintaining 99.9% uptime SLA, elevating patch compliance to 95%+, and driving PowerShell automation.",
-    points: [
-      "Administered 400+ physical and virtual Windows Servers (2012–2022), maintaining 99.9% uptime SLA.",
-      "Managed VMware vSphere clusters (ESXi, vCenter, vMotion, HA/DRS), optimizing VM resources and eliminating snapshot sprawl.",
-      "Designed and enforced GPO security baselines; spearheaded AD cleanup removing 500+ stale accounts and redundant policies.",
-      "Streamlined SCCM/ConfigMgr workflows, boundary groups, and maintenance rings, elevating patch compliance from ~70% to 95%+.",
-      "Served as primary L2 escalation point; authored standardized runbooks and SOPs that significantly reduced incident MTTR."
-    ]
-  }
+export const coreSkills = [
+  { name: "Kubernetes (K3s)", tag: "Cloud & DevOps" },
+  { name: "Docker", tag: "Containers" },
+  { name: "Terraform", tag: "IaC" },
+  { name: "Ansible", tag: "Automation" },
+  { name: "Argo CD (GitOps)", tag: "GitOps" },
+  { name: "Jenkins CI/CD", tag: "Automation" },
+  { name: "VMware vSphere 7.x", tag: "Virtualization" },
+  { name: "Windows Server 2012–2022", tag: "OS & Systems" },
+  { name: "Active Directory (AD DS)", tag: "Identity" },
+  { name: "Group Policy (GPO)", tag: "Security" },
+  { name: "SCCM / ConfigMgr", tag: "Endpoint" },
+  { name: "PowerShell Automation", tag: "Scripting" },
+  { name: "Prometheus & Grafana", tag: "SRE & Telemetry" },
+  { name: "Oracle Cloud (OCI) & Proxmox", tag: "Hybrid Cloud" }
 ];
 
 export const education = [
   {
     degree: "M.Tech – Computer Science",
-    institution: "Birla Institute of Technology and Science (BITS), Pilani",
-    period: "In Progress (Completes in 2027)",
-    highlight: "Specializing in advanced distributed computing, cloud architecture, and systems engineering."
+    institution: "BITS Pilani",
+    period: "2024 – 2027 (In Progress)",
+    note: "Advanced distributed systems, cloud computing, and infrastructure architecture."
   },
   {
     degree: "B.C.A – Bachelor of Computer Applications",
     institution: "Dr. Virendra Swarup Institute of Computer Studies, Kanpur",
     period: "2019 – 2022",
-    highlight: "Core computer science, operating systems, networking, database management, and programming."
+    note: "Operating systems, computer networks, systems architecture, and database theory."
   }
 ];
 
 export const certifications = [
-  {
-    name: "Microsoft AZ-900: Azure Fundamentals",
-    issuer: "Microsoft",
-    category: "Cloud",
-    type: "Official Certification"
-  },
-  {
-    name: "AWS Certified Cloud Practitioner",
-    issuer: "Amazon Web Services (AWS)",
-    category: "Cloud",
-    type: "Official Certification"
-  },
-  {
-    name: "AWS Architecting on AWS",
-    issuer: "Trainocate Group",
-    category: "Architecture",
-    type: "Professional Credential"
-  },
-  {
-    name: "AWS Digital Badge: Agentic AI Essentials",
-    issuer: "AWS",
-    category: "AI & Cloud",
-    type: "Digital Badge"
-  },
-  {
-    name: "AWS Digital Badge: Generative AI Essentials",
-    issuer: "AWS",
-    category: "AI & Cloud",
-    type: "Digital Badge"
-  },
-  {
-    name: "AWS Cloud Quest: Cloud Practitioner",
-    issuer: "AWS",
-    category: "Hands-on",
-    type: "Digital Badge"
-  },
-  {
-    name: "Microsoft Digital Badges: Cloud & AI",
-    issuer: "Microsoft",
-    category: "Cloud & AI",
-    type: "Digital Badge"
-  },
-  {
-    name: "Google Digital Badges: Cloud & AI",
-    issuer: "Google",
-    category: "Cloud & AI",
-    type: "Digital Badge"
-  }
+  { name: "Microsoft AZ-900", sub: "Azure Fundamentals" },
+  { name: "AWS Certified", sub: "Cloud Practitioner" },
+  { name: "AWS Architecting", sub: "Trainocate Group" },
+  { name: "AWS & Google Badges", sub: "Cloud & AI Essentials" }
 ];

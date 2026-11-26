@@ -1,142 +1,98 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowRight, Phone } from 'lucide-react';
 import { personalInfo } from '../mock';
+import { ArrowUpRight } from 'lucide-react';
 
-const Header = () => {
-  const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
+const Header = ({ activeSection, onNavigate, onOpenContact }) => {
   const [time, setTime] = useState('');
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 30);
-    window.addEventListener('scroll', onScroll);
-
     const tick = () => {
       const now = new Date();
-      setTime(now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false }));
+      setTime(now.toLocaleTimeString('en-US', { timeZone: 'Asia/Kolkata', hour: '2-digit', minute: '2-digit', hour12: false }));
     };
     tick();
-    const timer = setInterval(tick, 30000);
-
-    return () => {
-      window.removeEventListener('scroll', onScroll);
-      clearInterval(timer);
-    };
+    const interval = setInterval(tick, 20000);
+    return () => clearInterval(interval);
   }, []);
 
-  const scrollTo = (id) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-    setMenuOpen(false);
-  };
-
-  const navItems = [
-    { label: 'About', id: 'about' },
-    { label: 'Services', id: 'services' },
-    { label: 'DevOps Lab & Projects', id: 'projects' },
-    { label: 'Certifications', id: 'certifications' },
-    { label: 'Contact', id: 'contact' },
-  ];
-
   return (
-    <>
-      <header
-        className={`fixed top-0 left-0 right-0 z-50 px-6 md:px-16 lg:px-24 py-4 flex items-center justify-between transition-all duration-300 ${
-          scrolled
-            ? 'bg-[#FBF9F5]/95 backdrop-blur-md border-b border-[#E4E0D5] shadow-xs'
-            : 'bg-transparent'
-        }`}
-      >
-        {/* Brand / Logo */}
+    <header className="fixed top-0 left-0 right-0 z-40 px-6 md:px-12 py-5 bg-[#ECECEC]/90 backdrop-blur-md border-b border-[#D4D4D4] flex items-start justify-between font-mono text-[11px] text-[#181818]">
+      {/* Col 1: Wordmark & Micro-data */}
+      <div className="flex items-start gap-4">
         <button
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          className="group flex items-center gap-3 cursor-pointer text-left"
+          onClick={() => onNavigate('work')}
+          className="font-bold tracking-tight uppercase hover:text-[#FF4949] transition-colors text-left cursor-pointer"
         >
-          <div className="w-9 h-9 rounded-xl bg-[#121316] text-white flex items-center justify-center font-display text-lg tracking-wider group-hover:bg-[#0052FF] transition-colors shadow-2xs">
-            AM
-          </div>
-          <div>
-            <span className="font-sans font-bold text-sm tracking-tight text-[#121316] block leading-none">
-              ABHISHEK MISHRA
-            </span>
-            <span className="font-mono text-[10px] tracking-wider text-[#0052FF] font-semibold block mt-0.5 uppercase">
-              Cloud &amp; DevOps Engineer
-            </span>
-          </div>
+          <span className="block font-sans font-bold text-sm tracking-tight text-[#181818]">
+            ABHISHEK MISHRA
+          </span>
+          <span className="text-[10px] text-[#8C8C8C] block mt-0.5">
+            Cloud &amp; DevOps Engineer ©2026
+          </span>
         </button>
+      </div>
 
-        {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-7">
-          {navItems.map((item) => (
-            <button
-              key={item.id}
-              onClick={() => scrollTo(item.id)}
-              className="font-mono text-xs tracking-wider text-[#4A4D57] hover:text-[#0052FF] transition-colors uppercase font-medium cursor-pointer"
-            >
-              {item.label}
-            </button>
-          ))}
-        </nav>
-
-        {/* Right CTA & Clock */}
-        <div className="hidden md:flex items-center gap-5">
-          <div className="flex items-center gap-2 font-mono text-[11px] text-[#767A85] border-r border-[#E4E0D5] pr-5">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#059669] animate-pulse" />
-            <span>{time} IST</span>
-          </div>
-
-          <a
-            href={`tel:${personalInfo.phone.replace(/[^0-9+]/g, '')}`}
-            className="flex items-center gap-1.5 font-mono text-xs text-[#4A4D57] hover:text-[#121316] transition-colors"
-          >
-            <Phone size={12} className="text-[#059669]" />
-            <span>{personalInfo.phone}</span>
-          </a>
-
+      {/* Col 2: Stacked Menu Links */}
+      <div className="hidden sm:block space-y-1">
+        <span className="text-[#8C8C8C] uppercase block text-[10px]">Menu</span>
+        <div className="flex flex-col space-y-1 uppercase font-semibold">
           <button
-            onClick={() => scrollTo('contact')}
-            className="px-4 py-2 bg-[#121316] hover:bg-[#0052FF] text-white font-mono text-xs uppercase tracking-wider font-semibold rounded-lg transition-all cursor-pointer flex items-center gap-1.5"
+            onClick={() => onNavigate('work')}
+            className={`text-left transition-colors cursor-pointer ${activeSection === 'work' ? 'text-[#FF4949]' : 'text-[#181818] hover:text-[#FF4949]'}`}
           >
-            <span>Let's Talk</span>
-            <ArrowRight size={13} />
+            {activeSection === 'work' ? '→ ' : ''}WORK &amp; REPOS
+          </button>
+          <button
+            onClick={() => onNavigate('about')}
+            className={`text-left transition-colors cursor-pointer ${activeSection === 'about' ? 'text-[#FF4949]' : 'text-[#181818] hover:text-[#FF4949]'}`}
+          >
+            {activeSection === 'about' ? '→ ' : ''}ABOUT &amp; ARCHITECTURE
+          </button>
+          <button
+            onClick={onOpenContact}
+            className="text-left text-[#181818] hover:text-[#FF4949] transition-colors cursor-pointer"
+          >
+            CONTACT
           </button>
         </div>
+      </div>
 
-        {/* Mobile Hamburger */}
-        <button
-          onClick={() => setMenuOpen(!menuOpen)}
-          className="md:hidden p-2 text-[#121316]"
-          aria-label="Toggle menu"
-        >
-          <div className="w-6 h-5 flex flex-col justify-between">
-            <span className={`h-0.5 w-full bg-[#121316] transition-all ${menuOpen ? 'rotate-45 translate-y-2' : ''}`} />
-            <span className={`h-0.5 w-full bg-[#121316] transition-all ${menuOpen ? 'opacity-0' : ''}`} />
-            <span className={`h-0.5 w-full bg-[#121316] transition-all ${menuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
-          </div>
-        </button>
-      </header>
-
-      {/* Mobile Drawer */}
-      {menuOpen && (
-        <div className="fixed inset-0 z-40 bg-[#FBF9F5]/98 backdrop-blur-xl flex flex-col justify-center px-8 md:hidden">
-          <nav className="flex flex-col gap-6 items-start">
-            {navItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => scrollTo(item.id)}
-                className="text-2xl font-bold uppercase tracking-tight text-[#121316] hover:text-[#0052FF] transition-colors"
-              >
-                {item.label}
-              </button>
-            ))}
-            <div className="pt-6 border-t border-[#E4E0D5] w-full space-y-2 font-mono text-xs text-[#4A4D57]">
-              <p>Email: {personalInfo.email}</p>
-              <p>Phone: {personalInfo.phone}</p>
-              <p>Location: {personalInfo.location}</p>
-            </div>
-          </nav>
+      {/* Col 3: Status */}
+      <div className="hidden md:block space-y-1">
+        <span className="text-[#8C8C8C] uppercase block text-[10px]">Status</span>
+        <div className="flex items-center gap-1.5 font-semibold">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#10B981] animate-pulse" />
+          <span>Available — Roles &amp; Projects</span>
         </div>
-      )}
-    </>
+      </div>
+
+      {/* Col 4: Location & Time */}
+      <div className="hidden lg:block space-y-1">
+        <span className="text-[#8C8C8C] uppercase block text-[10px]">Working Globally</span>
+        <div className="font-semibold">
+          <span>Kanpur, {time} IST</span>
+        </div>
+      </div>
+
+      {/* Col 5: Inquiries & CTA */}
+      <div className="space-y-1 text-right">
+        <span className="text-[#8C8C8C] uppercase block text-[10px]">For inquiries</span>
+        <div className="flex items-center justify-end gap-3">
+          <a
+            href={`mailto:${personalInfo.email}`}
+            className="underline underline-offset-2 hover:text-[#FF4949] transition-colors font-semibold"
+          >
+            {personalInfo.email}
+          </a>
+          <button
+            onClick={onOpenContact}
+            className="hidden sm:inline-block px-3 py-1 bg-[#181818] text-[#ECECEC] rounded hover:bg-[#FF4949] transition-colors font-sans uppercase font-bold text-[10px] cursor-pointer"
+          >
+            Get In Touch
+          </button>
+        </div>
+      </div>
+    </header>
   );
 };
 

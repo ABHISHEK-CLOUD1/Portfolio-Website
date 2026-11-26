@@ -1,18 +1,12 @@
 import React, { useState } from 'react';
 import { personalInfo } from '../mock';
-import { Mail, Phone, MapPin, Linkedin, Github, Send, CheckCircle2, AlertCircle, Loader2, Copy, Check, ArrowUpRight } from 'lucide-react';
+import { Mail, Phone, MapPin, Linkedin, Github, Send, CheckCircle2, AlertCircle, Loader2, Copy, Check, X, ArrowUpRight } from 'lucide-react';
 
-const Contact = () => {
+const Contact = ({ isOpen, onClose }) => {
   const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
-  const [status, setStatus] = useState('idle'); // 'idle' | 'submitting' | 'success' | 'error'
-  const [successNote, setSuccessNote] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
+  const [status, setStatus] = useState('idle');
   const [copiedPhone, setCopiedPhone] = useState(false);
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
+  const [successNote, setSuccessNote] = useState('');
 
   const handleCopyPhone = () => {
     navigator.clipboard.writeText(personalInfo.phone);
@@ -20,12 +14,14 @@ const Contact = () => {
     setTimeout(() => setCopiedPhone(false), 2000);
   };
 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus('submitting');
-    setErrorMessage('');
-    setSuccessNote('');
-
     try {
       const response = await fetch(`https://formsubmit.co/ajax/${personalInfo.email}`, {
         method: 'POST',
@@ -36,7 +32,7 @@ const Contact = () => {
         body: JSON.stringify({
           name: formData.name,
           email: formData.email,
-          _subject: `New Portfolio Message: ${formData.subject || 'Cloud & DevOps Role'} (from ${formData.name})`,
+          _subject: `New Portfolio Inquiry: ${formData.subject || 'Direct Message'} (from ${formData.name})`,
           subject: formData.subject,
           message: formData.message,
           _template: 'table',
@@ -45,266 +41,219 @@ const Contact = () => {
       });
 
       const data = await response.json();
-
       if (response.ok && (data.success === 'true' || data.success === true || response.status === 200)) {
         setStatus('success');
-        setSuccessNote(`Message delivered! An instant notification has been dispatched to ${personalInfo.email}.`);
-        setFormData({ name: '', email: '', subject: '', message: '' });
-      } else if (data.message && data.message.toLowerCase().includes('activation')) {
-        setStatus('success');
-        setSuccessNote(`Form Activation Notice: FormSubmit has sent a one-time activation confirmation email to ${personalInfo.email}. Once verified, all messages arrive immediately!`);
+        setSuccessNote(`Message dispatched directly to ${personalInfo.email}.`);
         setFormData({ name: '', email: '', subject: '', message: '' });
       } else {
-        throw new Error(data.message || 'Notification service responded with an error');
+        throw new Error('Service response error');
       }
     } catch (err) {
-      console.error('Contact submit error:', err);
+      console.error(err);
       setStatus('error');
-      setErrorMessage(
-        'Could not deliver automated notification. Please send directly via email client or phone.'
-      );
     }
   };
 
-  const inputClass = `
-    w-full bg-[#FBF9F5] border border-[#E4E0D5] rounded-xl
-    px-4 py-3.5 font-mono text-sm text-[#121316] placeholder-[#767A85]
-    focus:outline-none focus:border-[#0052FF] focus:ring-2 focus:ring-[#0052FF]/20 transition-all
-  `;
-
-  const channels = [
-    {
-      icon: <Mail size={16} className="text-[#0052FF]" />,
-      label: 'Direct Email',
-      value: personalInfo.email,
-      href: `mailto:${personalInfo.email}?subject=Cloud%20%26%20DevOps%20Opportunity`
-    },
-    {
-      icon: <Phone size={16} className="text-[#059669]" />,
-      label: 'Direct Phone / WhatsApp',
-      value: personalInfo.phone,
-      href: `tel:${personalInfo.phone.replace(/[^0-9+]/g, '')}`,
-      canCopy: true
-    },
-    {
-      icon: <MapPin size={16} className="text-[#FF4D00]" />,
-      label: 'Location',
-      value: personalInfo.location,
-      href: `https://maps.google.com/?q=${encodeURIComponent(personalInfo.location)}`
-    },
-    {
-      icon: <Linkedin size={16} className="text-[#0052FF]" />,
-      label: 'LinkedIn Profile',
-      value: 'Connect with Abhishek Mishra',
-      href: personalInfo.linkedin
-    },
-    {
-      icon: <Github size={16} className="text-[#121316]" />,
-      label: 'GitHub Profile',
-      value: 'github.com/ABHISHEK-CLOUD1',
-      href: personalInfo.github
-    }
-  ];
+  // If used as modal overlay
+  if (!isOpen) return null;
 
   return (
-    <section id="contact" className="py-24 px-6 md:px-16 lg:px-24 bg-[#FBF9F5] border-b border-[#E4E0D5]">
-      <div className="max-w-7xl mx-auto">
-
-        {/* Section Index Marker */}
-        <div className="flex items-center gap-3 mb-12">
-          <span className="font-mono text-xs tracking-[0.25em] text-[#0052FF] uppercase font-bold">04 // CONTACT</span>
-          <div className="w-10 h-px bg-[#E4E0D5]" />
-          <span className="font-mono text-xs tracking-wider text-[#767A85] uppercase">Start A Conversation</span>
+    <div className="fixed inset-0 z-50 bg-[#181818]/60 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 overflow-y-auto animate-in fade-in duration-300">
+      {/* Container holding overlapping physical postcard style (huyml.co signature) */}
+      <div className="relative max-w-4xl w-full my-auto">
+        
+        {/* Background Decorative Paper Card (Tilted Behind) */}
+        <div className="hidden sm:block absolute -top-4 -right-4 w-full h-full bg-[#ECECEC] border border-[#D4D4D4] transform rotate-1 rounded-none pointer-events-none shadow-lg opacity-90 p-8">
+          <div className="flex justify-between items-start font-mono text-[10px] text-[#8C8C8C]">
+            <span>CREDITS &amp; STUDIO</span>
+            <span>ABHISHEK MISHRA ©2026</span>
+          </div>
         </div>
 
-        {/* Headline */}
-        <div className="mb-16">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#121316]">
-            Let's Build &amp; Scale <br />
-            <span className="text-[#0052FF]">Together</span>
-          </h2>
-          <p className="text-sm md:text-base text-[#4A4D57] max-w-xl mt-3 leading-relaxed">
-            Available for Cloud &amp; DevOps Engineering roles, hybrid cloud infrastructure design, Kubernetes deployments, and enterprise operations.
-          </p>
-        </div>
-
-        <div className="grid lg:grid-cols-12 gap-12 items-start">
-          {/* Left Column: Direct Channels */}
-          <div className="lg:col-span-5 space-y-4">
-            {channels.map(({ icon, label, value, href, canCopy }) => (
-              <div
-                key={label}
-                className="p-4 rounded-xl bg-white border border-[#E4E0D5] hover:border-[#121316] transition-all flex items-center justify-between group shadow-2xs"
-              >
-                <a
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-3.5 flex-1"
-                >
-                  <div className="w-10 h-10 rounded-lg bg-[#FBF9F5] border border-[#E4E0D5] flex items-center justify-center group-hover:scale-105 transition-transform">
-                    {icon}
-                  </div>
-                  <div>
-                    <p className="font-mono text-[10px] text-[#767A85] uppercase tracking-wider font-medium">{label}</p>
-                    <p className="font-sans text-sm font-semibold text-[#121316] group-hover:text-[#0052FF] transition-colors">{value}</p>
-                  </div>
-                </a>
-
-                {canCopy ? (
-                  <button
-                    onClick={handleCopyPhone}
-                    title="Copy phone number"
-                    className="p-2 text-[#767A85] hover:text-[#0052FF] transition-colors cursor-pointer"
-                  >
-                    {copiedPhone ? <Check size={16} className="text-[#059669]" /> : <Copy size={16} />}
-                  </button>
-                ) : (
-                  <a href={href} target="_blank" rel="noopener noreferrer">
-                    <ArrowUpRight size={16} className="text-[#767A85] group-hover:text-[#0052FF] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
-                  </a>
-                )}
-              </div>
-            ))}
-
-            <div className="p-4 rounded-xl bg-white border border-[#E4E0D5] flex items-start gap-3 mt-6">
-              <span className="relative flex h-2 w-2 mt-1.5 shrink-0">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#059669] opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#059669]"></span>
-              </span>
-              <p className="font-mono text-xs text-[#4A4D57] leading-relaxed">
-                Direct Notification Engine: Messages submitted through the form trigger an automated instant alert to <span className="font-semibold text-[#121316]">{personalInfo.email}</span>.
-              </p>
+        {/* Foreground Matte Ink Card */}
+        <div className="relative z-10 bg-[#181818] text-[#ECECEC] border border-black p-8 sm:p-12 shadow-2xl rounded-none space-y-8">
+          {/* Header */}
+          <div className="flex items-start justify-between pb-6 border-b border-white/10 font-mono text-xs">
+            <div>
+              <span className="text-[#8C8C8C] uppercase text-[10px] tracking-wider block">03 // DIRECT DISPATCH</span>
+              <h3 className="font-sans font-bold text-3xl uppercase tracking-tight text-white mt-1">
+                COME SAY HI
+              </h3>
             </div>
+
+            <button
+              onClick={onClose}
+              className="p-2 text-white/60 hover:text-white hover:bg-white/10 rounded transition-colors cursor-pointer flex items-center gap-1.5 font-mono text-xs"
+            >
+              <span>Close</span>
+              <X size={16} />
+            </button>
           </div>
 
-          {/* Right Column: Contact Form */}
-          <div className="lg:col-span-7">
-            <div className="bg-white border-2 border-[#121316] rounded-2xl p-8 md:p-10 shadow-[6px_6px_0px_0px_#121316]">
-              {status === 'success' ? (
-                <div className="py-12 text-center space-y-4">
-                  <div className="w-16 h-16 rounded-full bg-[#059669]/10 text-[#059669] border border-[#059669]/20 flex items-center justify-center mx-auto">
-                    <CheckCircle2 size={32} />
-                  </div>
-                  <h3 className="font-sans font-bold text-2xl text-[#121316]">
-                    Message Dispatched!
-                  </h3>
-                  <p className="font-mono text-xs text-[#4A4D57] max-w-md mx-auto leading-relaxed">
-                    {successNote || `Notification delivered directly to ${personalInfo.email}.`}
-                  </p>
-                  <div className="pt-4">
-                    <button
-                      onClick={() => setStatus('idle')}
-                      className="px-6 py-2.5 rounded-lg font-mono text-xs uppercase tracking-wider bg-[#121316] text-white hover:bg-[#0052FF] transition-colors cursor-pointer"
+          <div className="grid md:grid-cols-12 gap-8 items-start">
+            {/* Left Rail: Direct Info */}
+            <div className="md:col-span-5 space-y-6 font-mono text-xs text-white/80">
+              <p className="font-sans text-sm text-white/70 leading-relaxed font-normal">
+                Available for Cloud &amp; DevOps Engineering roles, high-scale virtualization architecture, and ambitious technical projects.
+              </p>
+
+              <div className="space-y-3 pt-2">
+                <div>
+                  <span className="text-[#8C8C8C] text-[10px] uppercase block tracking-wider">Email</span>
+                  <a
+                    href={`mailto:${personalInfo.email}`}
+                    className="text-white hover:text-[#FF4949] underline underline-offset-2 font-semibold transition-colors"
+                  >
+                    {personalInfo.email}
+                  </a>
+                </div>
+
+                <div>
+                  <span className="text-[#8C8C8C] text-[10px] uppercase block tracking-wider">Direct Phone / WhatsApp</span>
+                  <div className="flex items-center gap-2 mt-0.5">
+                    <a
+                      href={`tel:${personalInfo.phone.replace(/[^0-9+]/g, '')}`}
+                      className="text-white hover:text-[#FF4949] font-semibold"
                     >
-                      Send Another Message
+                      {personalInfo.phone}
+                    </a>
+                    <button
+                      onClick={handleCopyPhone}
+                      title="Copy phone"
+                      className="text-[#8C8C8C] hover:text-white transition-colors cursor-pointer"
+                    >
+                      {copiedPhone ? <Check size={13} className="text-[#10B981]" /> : <Copy size={13} />}
                     </button>
                   </div>
                 </div>
+
+                <div>
+                  <span className="text-[#8C8C8C] text-[10px] uppercase block tracking-wider">Location</span>
+                  <span className="text-white">{personalInfo.location}</span>
+                </div>
+
+                <div>
+                  <span className="text-[#8C8C8C] text-[10px] uppercase block tracking-wider">Network</span>
+                  <div className="flex items-center gap-4 pt-1">
+                    <a
+                      href={personalInfo.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-white hover:text-[#FF4949] transition-colors"
+                    >
+                      <Github size={13} />
+                      <span>GitHub</span>
+                    </a>
+                    <a
+                      href={personalInfo.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-white hover:text-[#FF4949] transition-colors"
+                    >
+                      <Linkedin size={13} />
+                      <span>LinkedIn</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Rail: Minimal Contact Form */}
+            <div className="md:col-span-7 bg-[#202020] p-6 border border-white/10 font-mono text-xs">
+              {status === 'success' ? (
+                <div className="py-8 text-center space-y-3">
+                  <div className="w-12 h-12 rounded-full bg-[#10B981]/20 text-[#10B981] flex items-center justify-center mx-auto">
+                    <CheckCircle2 size={24} />
+                  </div>
+                  <h4 className="font-sans font-bold text-lg text-white">Dispatched!</h4>
+                  <p className="text-[#8C8C8C] text-[11px] max-w-xs mx-auto leading-relaxed">
+                    {successNote || 'Your message has been sent directly to Abhishek.'}
+                  </p>
+                  <button
+                    onClick={() => setStatus('idle')}
+                    className="mt-2 px-4 py-1.5 bg-white text-black hover:bg-[#FF4949] hover:text-white transition-colors cursor-pointer"
+                  >
+                    Send Another
+                  </button>
+                </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-5">
+                <form onSubmit={handleSubmit} className="space-y-4">
                   {status === 'error' && (
-                    <div className="p-3.5 rounded-lg bg-red-50 border border-red-200 text-red-700 text-xs font-mono flex items-center gap-2">
-                      <AlertCircle size={15} className="shrink-0" />
-                      <span>{errorMessage}</span>
+                    <div className="p-2 bg-red-900/30 border border-red-500/50 text-red-200 text-[10px]">
+                      Could not dispatch automatically. Please email directly.
                     </div>
                   )}
 
-                  <div className="grid md:grid-cols-2 gap-5">
-                    <div>
-                      <label className="font-mono text-xs uppercase text-[#121316] font-bold block mb-1.5">
-                        Your Name *
-                      </label>
-                      <input
-                        name="name"
-                        type="text"
-                        placeholder="Alex Morgan"
-                        value={formData.name}
-                        onChange={handleChange}
-                        required
-                        className={inputClass}
-                      />
-                    </div>
-                    <div>
-                      <label className="font-mono text-xs uppercase text-[#121316] font-bold block mb-1.5">
-                        Your Email *
-                      </label>
-                      <input
-                        name="email"
-                        type="email"
-                        placeholder="alex@enterprise.com"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                        className={inputClass}
-                      />
-                    </div>
-                  </div>
-
                   <div>
-                    <label className="font-mono text-xs uppercase text-[#121316] font-bold block mb-1.5">
-                      Subject *
-                    </label>
+                    <label className="text-[10px] text-[#8C8C8C] uppercase block mb-1">Your Name *</label>
                     <input
-                      name="subject"
+                      name="name"
                       type="text"
-                      placeholder="Cloud & DevOps Engineering Opportunity"
-                      value={formData.subject}
+                      placeholder="Alex Morgan"
+                      value={formData.name}
                       onChange={handleChange}
                       required
-                      className={inputClass}
+                      className="w-full bg-[#181818] border border-white/20 p-2.5 text-white placeholder-white/30 focus:outline-none focus:border-[#FF4949]"
                     />
                   </div>
 
                   <div>
-                    <label className="font-mono text-xs uppercase text-[#121316] font-bold block mb-1.5">
-                      Message *
-                    </label>
+                    <label className="text-[10px] text-[#8C8C8C] uppercase block mb-1">Your Email *</label>
+                    <input
+                      name="email"
+                      type="email"
+                      placeholder="alex@enterprise.com"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                      className="w-full bg-[#181818] border border-white/20 p-2.5 text-white placeholder-white/30 focus:outline-none focus:border-[#FF4949]"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="text-[10px] text-[#8C8C8C] uppercase block mb-1">Message *</label>
                     <textarea
                       name="message"
-                      rows={5}
-                      placeholder="Share details regarding your team, infrastructure requirements, or scheduled interviews..."
+                      rows={3}
+                      placeholder="Share details regarding your team, infrastructure scope, or ideas..."
                       value={formData.message}
                       onChange={handleChange}
                       required
-                      className={`${inputClass} resize-none`}
+                      className="w-full bg-[#181818] border border-white/20 p-2.5 text-white placeholder-white/30 focus:outline-none focus:border-[#FF4949] resize-none"
                     />
                   </div>
 
-                  <div className="pt-2 flex flex-col sm:flex-row items-center gap-4">
-                    <button
-                      type="submit"
-                      disabled={status === 'submitting'}
-                      className="w-full sm:w-auto px-8 py-3.5 bg-[#0052FF] hover:bg-[#0043D6] text-white font-mono text-xs tracking-wider uppercase font-semibold rounded-xl transition-all flex items-center justify-center gap-2 cursor-pointer shadow-sm disabled:opacity-50"
-                    >
-                      {status === 'submitting' ? (
-                        <>
-                          <Loader2 size={15} className="animate-spin" />
-                          <span>Dispatching Notification...</span>
-                        </>
-                      ) : (
-                        <>
-                          <span>Send Message</span>
-                          <Send size={13} />
-                        </>
-                      )}
-                    </button>
-
-                    <a
-                      href={`mailto:${personalInfo.email}?subject=Direct%20Inquiry%20via%20Portfolio`}
-                      className="font-mono text-xs text-[#767A85] hover:text-[#121316] uppercase tracking-wider transition-colors"
-                    >
-                      Or open email client directly
-                    </a>
-                  </div>
+                  <button
+                    type="submit"
+                    disabled={status === 'submitting'}
+                    className="w-full py-2.5 bg-[#FF4949] hover:bg-[#e03838] text-white font-mono text-xs uppercase tracking-wider font-bold transition-colors cursor-pointer flex items-center justify-center gap-2"
+                  >
+                    {status === 'submitting' ? (
+                      <>
+                        <Loader2 size={13} className="animate-spin" />
+                        <span>Sending...</span>
+                      </>
+                    ) : (
+                      <>
+                        <span>Dispatch Message</span>
+                        <Send size={12} />
+                      </>
+                    )}
+                  </button>
                 </form>
               )}
             </div>
           </div>
+
+          {/* Footer note */}
+          <div className="pt-4 border-t border-white/10 flex items-center justify-between font-mono text-[10px] text-[#8C8C8C]">
+            <span>Kanpur, India • BITS Pilani M.Tech (2027)</span>
+            <span className="text-white/40">Press ESC or click close</span>
+          </div>
         </div>
 
       </div>
-    </section>
+    </div>
   );
 };
 

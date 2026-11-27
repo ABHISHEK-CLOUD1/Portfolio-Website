@@ -40,6 +40,7 @@ body {
 /* ── Subtle Scrollbar ── */
 ::-webkit-scrollbar {
     width: 5px;
+    height: 5px;
 }
 ::-webkit-scrollbar-track {
     background: #ECECEC;
@@ -52,10 +53,13 @@ body {
     background: #FF4949;
 }
 
-/* ── Swiss Fade Masks (huyml.co signature) ── */
-.mask-fade-y {
-    mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
-    -webkit-mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+/* ── Hide Scrollbar for Horizontal Touch Sliders ── */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
 /* ── Tilted Perspective Card effect ── */

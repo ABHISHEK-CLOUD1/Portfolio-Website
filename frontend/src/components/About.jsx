@@ -4,23 +4,23 @@ import { ArrowUpRight, GraduationCap, Award, Server, Layers, Cpu, Shield } from 
 
 const About = ({ onOpenContact }) => {
   return (
-    <section id="about" className="relative py-28 px-6 md:px-12 bg-[#ECECEC] text-[#181818] border-t border-[#D4D4D4] overflow-hidden">
+    <section id="about" className="relative scroll-mt-24 sm:scroll-mt-20 py-16 sm:py-28 px-4 sm:px-6 md:px-12 bg-[#ECECEC] text-[#181818] border-t border-[#D4D4D4] overflow-hidden">
       {/* Background Monumental White Numerals */}
-      <div className="absolute top-10 right-10 pointer-events-none select-none z-0">
-        <span className="font-mono text-[140px] sm:text-[220px] font-bold text-white leading-none tracking-tighter opacity-90 block">
+      <div className="absolute top-6 right-4 sm:top-10 sm:right-10 pointer-events-none select-none z-0">
+        <span className="font-mono text-[84px] sm:text-[180px] md:text-[220px] font-bold text-white leading-none tracking-tighter opacity-70 sm:opacity-90 block">
           400+
         </span>
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto space-y-20">
+      <div className="relative z-10 max-w-7xl mx-auto space-y-12 sm:space-y-20">
         
         {/* Section Marker */}
-        <div className="flex items-center gap-3">
+        <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
           <span className="font-mono text-xs text-[#FF4949] font-bold uppercase tracking-widest">
             02 // ABOUT &amp; LEDGER
           </span>
-          <div className="w-12 h-px bg-[#D4D4D4]" />
-          <span className="font-mono text-xs text-[#8C8C8C] uppercase tracking-wider">
+          <div className="hidden sm:block w-12 h-px bg-[#D4D4D4]" />
+          <span className="font-mono text-[11px] sm:text-xs text-[#8C8C8C] uppercase tracking-wider">
             Architecture, Approach &amp; Credentials
           </span>
         </div>

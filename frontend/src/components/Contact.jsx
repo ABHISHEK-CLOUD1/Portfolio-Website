@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { personalInfo } from '../mock';
 import { Mail, Phone, MapPin, Linkedin, Github, Send, CheckCircle2, AlertCircle, Loader2, Copy, Check, X, ArrowUpRight } from 'lucide-react';
 
@@ -7,6 +7,15 @@ const Contact = ({ isOpen, onClose }) => {
   const [status, setStatus] = useState('idle');
   const [copiedPhone, setCopiedPhone] = useState(false);
   const [successNote, setSuccessNote] = useState('');
+
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') onClose();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen, onClose]);
 
   const handleCopyPhone = () => {
     navigator.clipboard.writeText(personalInfo.phone);
@@ -58,7 +67,13 @@ const Contact = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 bg-[#181818]/60 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 overflow-y-auto animate-in fade-in duration-300">
+    <div
+      role="dialog"
+      aria-modal="true"
+      aria-label="Direct Dispatch Contact Form"
+      onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
+      className="fixed inset-0 z-50 bg-[#181818]/65 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 overflow-y-auto animate-in fade-in duration-300"
+    >
       {/* Container holding overlapping physical postcard style (huyml.co signature) */}
       <div className="relative max-w-4xl w-full my-auto">
         
@@ -71,26 +86,26 @@ const Contact = ({ isOpen, onClose }) => {
         </div>
 
         {/* Foreground Matte Ink Card */}
-        <div className="relative z-10 bg-[#181818] text-[#ECECEC] border border-black p-8 sm:p-12 shadow-2xl rounded-none space-y-8">
-          {/* Header */}
-          <div className="flex items-start justify-between pb-6 border-b border-white/10 font-mono text-xs">
+        <div className="relative z-10 bg-[#181818] text-[#ECECEC] border border-black max-h-[90vh] overflow-y-auto p-5 sm:p-10 shadow-2xl rounded-none space-y-6 sm:space-y-8">
+          {/* Header (sticky on mobile scroll so Close is always accessible) */}
+          <div className="sticky -top-5 sm:static z-20 bg-[#181818] -mx-5 px-5 pt-4 pb-4 sm:mx-0 sm:px-0 sm:pt-0 sm:pb-6 flex items-start justify-between border-b border-white/10 font-mono text-xs">
             <div>
               <span className="text-[#8C8C8C] uppercase text-[10px] tracking-wider block">03 // DIRECT DISPATCH</span>
-              <h3 className="font-sans font-bold text-3xl uppercase tracking-tight text-white mt-1">
+              <h3 className="font-sans font-bold text-2xl sm:text-3xl uppercase tracking-tight text-white mt-0.5 sm:mt-1">
                 COME SAY HI
               </h3>
             </div>
 
             <button
               onClick={onClose}
-              className="p-2 text-white/60 hover:text-white hover:bg-white/10 rounded transition-colors cursor-pointer flex items-center gap-1.5 font-mono text-xs"
+              className="p-2 text-white/70 hover:text-white hover:bg-white/10 transition-colors cursor-pointer flex items-center gap-1.5 font-mono text-xs shrink-0"
             >
               <span>Close</span>
               <X size={16} />
             </button>
           </div>
 
-          <div className="grid md:grid-cols-12 gap-8 items-start">
+          <div className="grid md:grid-cols-12 gap-6 sm:gap-8 items-start">
             {/* Left Rail: Direct Info */}
             <div className="md:col-span-5 space-y-6 font-mono text-xs text-white/80">
               <p className="font-sans text-sm text-white/70 leading-relaxed font-normal">

@@ -75,11 +75,11 @@ const Footer = ({ onNavigate, onOpenContact }) => {
             </a>
             <a
               href={`mailto:${personalInfo.email}`}
-              className="flex items-center gap-1.5 hover:text-[#FF4949] transition-colors"
+              className="flex items-center gap-1.5 hover:text-[#FF4949] transition-colors min-w-0"
             >
-              <Mail size={12} />
-              <span>{personalInfo.email}</span>
-              <ArrowUpRight size={10} className="text-[#8C8C8C]" />
+              <Mail size={12} className="shrink-0" />
+              <span className="break-all">{personalInfo.email}</span>
+              <ArrowUpRight size={10} className="text-[#8C8C8C] shrink-0" />
             </a>
           </div>
         </div>

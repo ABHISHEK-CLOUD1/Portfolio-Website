@@ -17,9 +17,9 @@ const Header = ({ activeSection, onNavigate, onOpenContact }) => {
   return (
     <header className="fixed top-0 left-0 right-0 z-40 bg-[#ECECEC]/95 backdrop-blur-md border-b border-[#D4D4D4] font-mono text-[11px] text-[#181818]">
       {/* Main Header Row */}
-      <div className="px-4 sm:px-6 md:px-12 py-3 sm:py-5 flex items-center sm:items-start justify-between gap-4">
+      <div className="px-4 sm:px-6 md:px-12 py-3 sm:py-5 flex items-center sm:items-start justify-between gap-4 sm:gap-6">
         {/* Col 1: Wordmark & Micro-data */}
-        <div className="min-w-0">
+        <div className="min-w-0 sm:shrink-0">
           <button
             onClick={() => onNavigate('work')}
             className="font-bold tracking-tight uppercase hover:text-[#FF4949] transition-colors text-left cursor-pointer"
@@ -34,9 +34,9 @@ const Header = ({ activeSection, onNavigate, onOpenContact }) => {
         </div>
 
         {/* Col 2: Stacked Menu Links (sm+) */}
-        <div className="hidden sm:block space-y-1">
+        <div className="hidden sm:block space-y-1 shrink-0">
           <span className="text-[#8C8C8C] uppercase block text-[10px]">Menu</span>
-          <div className="flex flex-col space-y-1 uppercase font-semibold">
+          <div className="flex flex-col space-y-1 uppercase font-semibold whitespace-nowrap">
             <button
               onClick={() => onNavigate('work')}
               className={`text-left transition-colors cursor-pointer ${activeSection === 'work' ? 'text-[#FF4949]' : 'text-[#181818] hover:text-[#FF4949]'}`}
